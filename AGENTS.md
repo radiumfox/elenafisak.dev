@@ -15,3 +15,8 @@ This is a React landing page featuring information about the career path of a Se
 ## Package Manager Specification
 
 Use pnpm for all dependency operations and scripts (never npm or yarn, which would generate `package-lock.json`). Pin exact, caret-less versions in `package.json`.
+
+## Language and Frameworks Specification
+
+### TypeScript
+Use `interfaces` instead of `types` where possible.

@@ -19,7 +19,7 @@ export function FooterBase({ logo, description, columns, children }: FooterBaseP
       <div className="mx-auto max-w-[1440px] px-6 py-10">
         <div className="grid gap-8 lg:grid-cols-4">
           <div>
-            <span className="mb-4 block">{logo}</span>
+            <span className="mb-4 block w-[50px] h-[50px]">{logo}</span>
             <p className="text-sm">{description}</p>
           </div>
           {columns.map((column) => (

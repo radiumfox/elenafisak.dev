@@ -1,4 +1,4 @@
-export default function ExperiencePage() {
+﻿export default function ExperiencePage() {
   return (
     <article className="mt-4 w-full min-w-0 px-1 md:px-6 lg:px-12 lg:pr-6">
       <div className="space-y-4">

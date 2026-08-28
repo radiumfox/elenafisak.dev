@@ -1,9 +1,9 @@
-import "./globals.css";
-import type { ReactNode } from "react";
-import { HeaderBase } from "@/components/HeaderBase";
-import { SidebarBase } from "@/components/SidebarBase";
-import { FooterBase } from "@/components/FooterBase";
-import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/router/routes";
+﻿import './globals.css';
+import type { ReactNode } from 'react';
+import { HeaderBase } from '@/components/HeaderBase';
+import { SidebarBase } from '@/components/SidebarBase';
+import { FooterBase } from '@/components/FooterBase';
+import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router/routes';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

@@ -1,4 +1,4 @@
-import { SidebarBaseLink } from "./SidebarBaseLink";
+﻿import { SidebarBaseLink } from './SidebarBaseLink';
 
 export interface SidebarLink {
   label: string;

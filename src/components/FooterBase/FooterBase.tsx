@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { FooterBaseLink } from "./FooterBaseLink";
+﻿import type { ReactNode } from 'react';
+import { FooterBaseLink } from './FooterBaseLink';
 
 export interface FooterColumn {
   title: string;

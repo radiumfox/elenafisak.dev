@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { HeaderBaseLink } from "./HeaderBaseLink";
+﻿import type { ReactNode } from 'react';
+import { HeaderBaseLink } from './HeaderBaseLink';
 import Link from 'next/link';
 
 export interface HeaderLink {

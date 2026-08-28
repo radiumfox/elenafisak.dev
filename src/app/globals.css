@@ -7,7 +7,7 @@
   --line: #e2e2e2;
   --muted: #525252;
   --faint: #707070;
-  --accent: #ff1f8f;
+  --accent: #4cff63;
 }
 
 @theme inline {
@@ -30,7 +30,7 @@
     --line: #28282b;
     --muted: #a8a8a5;
     --faint: #80807e;
-    --accent: #ff2e97;
+    --accent: #3dff5e;
   }
 }
 

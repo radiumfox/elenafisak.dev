@@ -14,8 +14,8 @@ export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
         cy="32"
         r="29"
         stroke="currentColor"
-        strokeWidth="2"
-        opacity="0.5"
+        strokeWidth="1"
+        opacity="0.3"
       />
       <text
         x="32"

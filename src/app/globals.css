@@ -2,20 +2,35 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --subtle: #f6f6f6;
+  --line: #e2e2e2;
+  --muted: #525252;
+  --faint: #707070;
+  --accent: #ff1f8f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0d0a0c;
+    --foreground: #eaeae8;
+    --subtle: #171316;
+    --line: #28282b;
+    --muted: #a8a8a5;
+    --faint: #80807e;
+    --accent: #ff2e97;
   }
 }
 

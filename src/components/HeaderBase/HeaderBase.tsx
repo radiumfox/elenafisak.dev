@@ -15,10 +15,10 @@ interface HeaderBaseProps {
 
 export function HeaderBase({ logo, links }: HeaderBaseProps) {
   return (
-    <header className="sticky top-0 z-50 flex w-full flex-col px-6 py-4">
-      <nav className="flex items-center justify-between">
-        <Link className="w-[50px] h-[50px]" href="/">{logo}</Link>
-        <div className="flex items-center gap-6">
+    <header className="sticky top-0 z-40 flex h-16 w-full items-center border-b border-line bg-background px-5 md:px-10">
+      <nav className="flex w-full items-center justify-between">
+        <Link className="h-[50px] w-[50px]" href="/">{logo}</Link>
+        <div className="flex items-center gap-0.5">
           {links.map((link) => (
             <HeaderBaseLink key={link.label} href={link.href} target={link.target}>
               {link.label}

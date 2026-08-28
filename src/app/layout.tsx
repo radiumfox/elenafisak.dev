@@ -6,7 +6,7 @@ import { FooterBase } from '@/components/FooterBase';
 import { MenuDropdown } from '@/components/MenuDropdown';
 import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router/routes';
 import { COPYRIGHT } from '@/lib/copyrights/copyright';
-import { Logo } from '@/components/icons/Logo';
+import { Logo } from '@/lib/icons/Logo';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

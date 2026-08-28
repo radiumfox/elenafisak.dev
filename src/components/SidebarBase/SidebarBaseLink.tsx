@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 interface SidebarBaseLinkProps {
   href?: string;
@@ -9,7 +10,7 @@ export function SidebarBaseLink({ href, children }: SidebarBaseLinkProps) {
   if (href) {
     return (
       <li>
-        <a href={href}>{children}</a>
+        <Link href={href}>{children}</Link>
       </li>
     );
   }

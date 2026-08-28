@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 interface HeaderBaseLinkProps {
   href?: string;
@@ -7,7 +8,7 @@ interface HeaderBaseLinkProps {
 
 export function HeaderBaseLink({ href, children }: HeaderBaseLinkProps) {
   if (href) {
-    return <a href={href}>{children}</a>;
+    return <Link href={href}>{children}</Link>;
   }
   return <span>{children}</span>;
 }

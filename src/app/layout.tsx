@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { HeaderBase } from '@/components/HeaderBase';
 import { SidebarBase } from '@/components/SidebarBase';
 import { FooterBase } from '@/components/FooterBase';
+import { MenuDropdown } from '@/components/MenuDropdown';
 import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router/routes';
 import { COPYRIGHT } from '@/lib/copyrights/copyright';
 import { Logo } from '@/components/icons/Logo';
@@ -14,9 +15,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="flex min-h-screen flex-col">
           <HeaderBase logo={<Logo/>} links={SOCIAL_LINKS} />
 
-          <div className="sticky top-16 z-30 border-b px-4 py-3 lg:hidden">
-            <button>Menu</button>
-          </div>
+          <MenuDropdown links={NAV_LINKS} />
 
           <div className="px-6">
             <div className="relative mx-auto max-w-[1440px] py-10 lg:flex lg:flex-row">

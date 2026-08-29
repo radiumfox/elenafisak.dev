@@ -1,3 +1,5 @@
+'use client';
+
 import { ContentSection } from '@/components/ContentSection';
 import { FeatureCards } from '@/components/FeatureCards';
 import type { FeatureCardItem } from '@/components/FeatureCards';
@@ -5,6 +7,7 @@ import { SparkleIcon } from '@/lib/icons/SparkleIcon';
 import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
+import { ContactForm } from '@/components/ContactForm';
 
 const FEATURE_ITEMS: FeatureCardItem[] = [
   {
@@ -202,8 +205,11 @@ export default function HomePage() {
       <ContentSection id="contacts">
         <h1 className="text-4xl font-bold">Contacts</h1>
         <p>Ways to get in touch with me.</p>
-        <h2 className="text-2xl font-semibold">Get in touch</h2>
-        <p>Email and social links.</p>
+        <div className="flex gap-x-6">
+          <div className="w-full">Contacts list</div>
+          <ContactForm />
+        </div>
+
       </ContentSection>
     </main>
   );

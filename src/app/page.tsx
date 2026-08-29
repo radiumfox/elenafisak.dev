@@ -2,12 +2,14 @@
 
 export default function HomePage() {
   return (
-    <main className="mt-4 w-full min-w-0 px-1 md:px-6 lg:px-12 lg:pr-6 space-y-16">
+    <main className="mt-[140px] w-full min-w-0 px-1 md:px-6 lg:px-12 lg:pr-6 space-y-16">
       <ContentSection id="intro">
-        <h1 className="text-4xl font-bold">Intro</h1>
-        <p>Introductory paragraph describing who I am and what I do.</p>
-        <h2 className="text-2xl font-semibold">About me</h2>
-        <p>More content about my background.</p>
+        <p className="text-2xl opacity-80">Hi, I&#39;m Elena.</p>
+        <h1 className="text-4xl font-bold">I&#39;m a senior frontend engineer.</h1>
+        <div className="space-y-4 opacity-80 max-w-[800px]">
+          <p>With 5 years of experience building B2B and B2C SaaS products and shared design systems, I work across TypeScript, React, and Vue to turn ambitious ideas into fast, scalable, maintainable software.</p>
+          <p>I like owning things end-to-end — from the first architectural sketch to the final deploy — and I&#39;m equally happy deep in a tricky frontend problem or helping a teammate untangle one. I care about good abstractions, great developer experience, and shipping software that holds up over time.</p>
+        </div>
       </ContentSection>
 
       <ContentSection id="experience">

@@ -1,34 +1,27 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 interface SidebarBaseLinkProps {
-  href?: string;
+  id: string;
+  active: boolean;
   children: ReactNode;
 }
 
-export function SidebarBaseLink({ href, children }: SidebarBaseLinkProps) {
-  const pathname = usePathname();
-  const active = href !== undefined && pathname === href;
-
-  if (href) {
-    return (
-      <li>
-        <Link
-          href={href}
-          aria-current={active ? 'page' : undefined}
-          className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
-            active
-              ? 'text-accent'
-              : 'text-muted hover:bg-subtle hover:text-foreground'
-          }`}
-        >
-          {children}
-        </Link>
-      </li>
-    );
-  }
-  return <li>{children}</li>;
+export function SidebarBaseLink({ id, active, children }: SidebarBaseLinkProps) {
+  return (
+    <li>
+      <a
+        href={`#${id}`}
+        aria-current={active ? 'true' : undefined}
+        className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
+          active
+            ? 'text-accent'
+            : 'text-muted hover:bg-subtle hover:text-foreground'
+        }`}
+      >
+        {children}
+      </a>
+    </li>
+  );
 }

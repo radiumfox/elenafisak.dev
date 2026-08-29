@@ -20,3 +20,5 @@ Use pnpm for all dependency operations and scripts (never npm or yarn, which wou
 
 ### TypeScript
 Use `interfaces` instead of `types` where possible.
+
+Always put type/interface definitions in a dedicated `types.ts` file co-located with the related code. Use an `index.ts` in each folder to re-export all definitions and variables (e.g. `router/index.ts` does `export * from './routes'` and `export * from './types'`), and import from the folder index rather than individual files.

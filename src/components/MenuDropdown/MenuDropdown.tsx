@@ -1,17 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type { RouteLink } from '@/lib/router/routes';
+import { useMemo, useState } from 'react';
+import { useActiveSection } from '@/lib/hooks/useActiveSection';
+import type { SectionLink } from '@/lib/router';
 
 interface MenuDropdownProps {
-  links: RouteLink[];
+  links: SectionLink[];
 }
 
 export function MenuDropdown({ links }: MenuDropdownProps) {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const ids = useMemo(() => links.map((link) => link.id), [links]);
+  const activeId = useActiveSection(ids);
 
   return (
     <div className="sticky top-16 z-30 border-b border-line bg-background px-5 md:px-10 lg:hidden">
@@ -34,13 +34,13 @@ export function MenuDropdown({ links }: MenuDropdownProps) {
         <div className="overflow-hidden">
           <ul className="flex flex-col gap-0.5 pb-4 pt-2">
             {links.map((link) => {
-              const active = pathname === (link.href ?? '/');
+              const active = activeId === link.id;
               return (
-                <li key={link.label}>
-                  <Link
-                    href={link.href ?? '/'}
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
                     onClick={() => setOpen(false)}
-                    aria-current={active ? 'page' : undefined}
+                    aria-current={active ? 'true' : undefined}
                     className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
                       active
                         ? 'text-accent'
@@ -48,7 +48,7 @@ export function MenuDropdown({ links }: MenuDropdownProps) {
                     }`}
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               );
             })}

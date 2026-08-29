@@ -4,7 +4,7 @@ import { HeaderBase } from '@/components/HeaderBase';
 import { SidebarBase } from '@/components/SidebarBase';
 import { FooterBase } from '@/components/FooterBase';
 import { MenuDropdown } from '@/components/MenuDropdown';
-import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router/routes';
+import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router';
 import { COPYRIGHT } from '@/lib/copyrights/copyright';
 import { Logo } from '@/lib/icons/Logo';
 

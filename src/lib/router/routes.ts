@@ -1,23 +1,13 @@
-import type { ComponentType, SVGProps } from 'react';
 import { GitLabIcon } from '@/lib/icons/GitLabIcon';
 import { LinkedInIcon } from '@/lib/icons/LinkedInIcon';
 import { TelegramIcon } from '@/lib/icons/TelegramIcon';
+import type { SectionLink, SocialLink } from './types';
 
-export interface RouteLink {
-  label: string;
-  href?: string;
-}
-
-export interface SocialLink extends RouteLink {
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
-  target?: string;
-}
-
-export const NAV_LINKS: RouteLink[] = [
-  { label: 'Intro', href: '/' },
-  { label: 'Experience', href: '/experience' },
-  { label: 'Work', href: '/work' },
-  { label: 'Contacts', href: '/contacts' },
+export const NAV_LINKS: SectionLink[] = [
+  { label: 'Intro', id: 'intro' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Work', id: 'work' },
+  { label: 'Contacts', id: 'contacts' },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { RouteLink } from '@/lib/router/routes';
 
 interface MenuDropdownProps {
@@ -10,17 +11,20 @@ interface MenuDropdownProps {
 
 export function MenuDropdown({ links }: MenuDropdownProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <div className="sticky top-16 z-30 border-b px-4 py-3 lg:hidden">
-      <button
-        type="button"
-        onClick={() => setOpen((prev) => !prev)}
-        className="rounded border px-4 py-2 transition-colors hover:border-current cursor-pointer"
-        aria-expanded={open}
-      >
-        Menu
-      </button>
+    <div className="sticky top-16 z-30 border-b border-line bg-background px-5 md:px-10 lg:hidden">
+      <div className="py-3">
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          className="cursor-pointer rounded-full border border-line px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:border-foreground hover:bg-subtle hover:text-foreground"
+          aria-expanded={open}
+        >
+          Menu
+        </button>
+      </div>
 
       <div
         className={`grid transition-[grid-template-rows] duration-300 ease-out ${
@@ -28,18 +32,26 @@ export function MenuDropdown({ links }: MenuDropdownProps) {
         }`}
       >
         <div className="overflow-hidden">
-          <ul className="flex flex-col gap-1 pt-3">
-            {links.map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href ?? '/'}
-                  onClick={() => setOpen(false)}
-                  className="block rounded px-2 py-2 transition-colors hover:bg-black/5 dark:hover:bg-white/10"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+          <ul className="flex flex-col gap-0.5 pb-4 pt-2">
+            {links.map((link) => {
+              const active = pathname === (link.href ?? '/');
+              return (
+                <li key={link.label}>
+                  <Link
+                    href={link.href ?? '/'}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? 'page' : undefined}
+                    className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
+                      active
+                        ? 'text-accent'
+                        : 'text-muted hover:bg-subtle hover:text-foreground'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useActiveSection } from '@/lib/hooks/useActiveSection';
 import type { SectionLink } from '@/lib/router';
+import { NavLink } from '@/components/NavLink';
 
 interface MenuDropdownProps {
   links: SectionLink[];
@@ -37,18 +38,9 @@ export function MenuDropdown({ links }: MenuDropdownProps) {
               const active = activeId === link.id;
               return (
                 <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
-                    onClick={() => setOpen(false)}
-                    aria-current={active ? 'true' : undefined}
-                    className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
-                      active
-                        ? 'text-accent'
-                        : 'text-muted hover:bg-subtle hover:text-foreground'
-                    }`}
-                  >
+                  <NavLink id={link.id} onClick={() => setOpen(false)} active={active}>
                     {link.label}
-                  </a>
+                  </NavLink>
                 </li>
               );
             })}

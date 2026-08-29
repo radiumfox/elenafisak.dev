@@ -4,6 +4,7 @@ import type { FeatureCardItem } from '@/components/FeatureCards';
 import { SparkleIcon } from '@/lib/icons/SparkleIcon';
 import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
+import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 
 const FEATURE_ITEMS: FeatureCardItem[] = [
   {
@@ -107,6 +108,21 @@ const SKILLS = [
   },
 ] as const;
 
+const STEPS = [
+  {
+    title: 'bun init --react',
+    description: 'Scaffold a React app (or add index.html to any project).',
+  },
+  {
+    title: 'bun ./index.html',
+    description: 'Dev server with HMR that preserves state; browser logs stream to your terminal.',
+  },
+  {
+    title: 'bun build ./index.html --production',
+    description: 'Tree-shaken, minified, code-split bundles.',
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="mt-[140px] w-full min-w-0 px-1 md:px-6 lg:px-12 lg:pr-6 space-y-16">
@@ -159,6 +175,28 @@ export default function HomePage() {
             </CarouselCard>
           ))}
         </CarouselBase>
+      </ContentSection>
+
+      <ContentSection id="works">
+        <div className="space-y-10">
+          <h2 className="text-4xl font-bold tracking-tight">
+            I&#39;m currently working on
+          </h2>
+
+          <ProjectInfoCard
+            title="A project name"
+            description="Point a tool at an HTML file and get a dev server with instant hot reloading, then a production command for optimized bundles. React, TypeScript and CSS imports just work out of the box."
+            features={STEPS}
+            href="#"
+          />
+
+          <ProjectInfoCard
+            title="A project name"
+            description="Point a tool at an HTML file and get a dev server with instant hot reloading, then a production command for optimized bundles. React, TypeScript and CSS imports just work out of the box."
+            features={STEPS}
+            href="#"
+          />
+        </div>
       </ContentSection>
 
       <ContentSection id="contacts">

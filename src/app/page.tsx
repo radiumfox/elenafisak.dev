@@ -1,4 +1,58 @@
-﻿import { ContentSection } from '@/components/ContentSection';
+import { ContentSection } from '@/components/ContentSection';
+import { FeatureCards } from '@/components/FeatureCards';
+import type { FeatureCardItem } from '@/components/FeatureCards';
+import { SparkleIcon } from '@/lib/icons/SparkleIcon';
+
+const FEATURE_ITEMS: FeatureCardItem[] = [
+  {
+    id: 'zero-configuration',
+    icon: SparkleIcon,
+    title: 'Zero Configuration',
+    description: 'Start coding with TypeScript and React immediately — the build tooling and environment are already set up for you.',
+  },
+  {
+    id: 'rendering-modes',
+    icon: SparkleIcon,
+    title: 'Rendering Modes',
+    description: 'Server-side rendering, client-side rendering, static generation — decide per route what best fits the page.',
+  },
+  {
+    id: 'routing-layouts',
+    icon: SparkleIcon,
+    title: 'Routing & Layouts',
+    description: 'File-based routing and reusable layouts to build complex, URL-driven views with shared components.',
+  },
+  {
+    id: 'data-fetching',
+    icon: SparkleIcon,
+    title: 'Data Fetching',
+    description: 'Make your components async and await your data with idiomatic, type-safe data fetching patterns.',
+  },
+  {
+    id: 'error-handling',
+    icon: SparkleIcon,
+    title: 'Error Handling',
+    description: 'Catch errors gracefully with dedicated boundaries, custom error pages, and rich diagnostics.',
+  },
+  {
+    id: 'performance',
+    icon: SparkleIcon,
+    title: 'Performance',
+    description: 'Automatic code splitting, lazy loading, and asset optimization to keep interactions snappy.',
+  },
+  {
+    id: 'design-system',
+    icon: SparkleIcon,
+    title: 'Design System',
+    description: 'A consistent, themeable system with tokens that scale from a landing page to a full product.',
+  },
+  {
+    id: 'design-system-2',
+    icon: SparkleIcon,
+    title: 'Design System 2',
+    description: 'A consistent, themeable system with tokens that scale from a landing page to a full product.',
+  },
+];
 
 export default function HomePage() {
   return (
@@ -13,10 +67,18 @@ export default function HomePage() {
       </ContentSection>
 
       <ContentSection id="experience">
-        <h1 className="text-4xl font-bold">Experience</h1>
-        <p>Overview of my professional experience.</p>
-        <h2 className="text-2xl font-semibold">Work history</h2>
-        <p>Details about previous roles.</p>
+        <div className="space-y-12">
+          <div className="space-y-3">
+            <span className="block h-1 w-12 rounded-full bg-accent" />
+            <h2 className="text-4xl font-bold tracking-tight">
+              Everything I know, nothing I do not
+            </h2>
+            <p className="text-muted">
+              Where I have worked and what I built along the way.
+            </p>
+          </div>
+          <FeatureCards items={FEATURE_ITEMS} action={{ title: 'Reach out to me', href: 'https://www.linkedin.com/', linkText: 'To LinkedIn' }} />
+        </div>
       </ContentSection>
 
       <ContentSection id="work">

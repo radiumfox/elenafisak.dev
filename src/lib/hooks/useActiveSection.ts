@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
+const getHashId = () =>
+  typeof window !== 'undefined' ? window.location.hash.replace(/^#/, '') : '';
+
 export function useActiveSection(ids: string[]) {
   const [activeId, setActiveId] = useState(ids[0] ?? '');
 
@@ -28,13 +31,22 @@ export function useActiveSection(ids: string[]) {
       setActiveId(current);
     };
 
-    updateActiveId();
+    const updateHash = () => {
+      const current = getHashId();
+      if (ids.includes(current)) {
+        setActiveId(current);
+      }
+    };
+
+    updateHash();
+    window.addEventListener('hashchange', updateHash);
     window.addEventListener('scroll', updateActiveId, { passive: true });
     window.addEventListener('resize', updateActiveId);
 
     return () => {
       window.removeEventListener('scroll', updateActiveId);
       window.removeEventListener('resize', updateActiveId);
+      window.removeEventListener('hashchange', updateHash);
     };
   }, [ids]);
 

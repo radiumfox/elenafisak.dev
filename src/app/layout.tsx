@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <body>
-        <div className="flex flex-col lg:h-dvh">
+        <div className="flex flex-col">
           <HeaderBase logo={<Logo/>} links={SOCIAL_LINKS} />
 
           <MenuDropdown links={NAV_LINKS} />
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="px-6 lg:min-h-0 lg:flex-1">
             <div className="mx-auto max-w-[1440px] lg:flex lg:min-h-0 lg:flex-row lg:py-0">
               <SidebarBase links={NAV_LINKS} />
-              <div className="lg:min-h-0 lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">{/*this*/}
+              <div className="lg:min-h-0 lg:h-[100vh-64px] lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">
                 <div>
                   {children}
                 </div>

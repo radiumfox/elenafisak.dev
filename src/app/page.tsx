@@ -3,6 +3,7 @@ import { FeatureCards } from '@/components/FeatureCards';
 import type { FeatureCardItem } from '@/components/FeatureCards';
 import { SparkleIcon } from '@/lib/icons/SparkleIcon';
 import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
+import { LabelBase } from '@/components/LabelBase';
 
 const FEATURE_ITEMS: FeatureCardItem[] = [
   {
@@ -59,28 +60,52 @@ const SKILLS = [
   {
     title: '@nuxt/ui',
     description: 'The intuitive UI library powered by Reka UI and Tailwind CSS.',
+    label: [
+      { text: 'Reactive', color: 'blue' },
+      { text: 'Themed', color: 'purple' },
+    ],
   },
   {
     title: '@nuxt/content',
     description: 'The file-based CMS with support for Markdown, YAML, and JSON.',
+    label: [
+      { text: 'Markdown', color: 'orange' },
+      { text: 'Structured', color: 'green' },
+    ],
   },
   {
     title: '@nuxt/devtools',
     description: 'Visual tools that help you know your application better.',
+    label: [
+      { text: 'Visual', color: 'pink' },
+      { text: 'Insightful', color: 'blue' },
+    ],
   },
   {
     title: '@nuxt/image',
     description: 'Add images with progressive processing, lazy loading, and resizing.',
+    label: [
+      { text: 'Optimized', color: 'green' },
+      { text: 'Lazy', color: 'orange' },
+    ],
   },
   {
     title: '@nuxt/icon',
     description: 'Icon module for Nuxt with thousands of ready-to-use icons.',
+    label: [
+      { text: 'Scalable', color: 'purple' },
+      { text: 'Modern', color: 'pink' },
+    ],
   },
   {
     title: '@nuxt/eslint',
     description: 'Project-aware, easy-to-use, extensible and future-proof linting.',
+    label: [
+      { text: 'Extensible', color: 'green' },
+      { text: 'Reliable', color: 'blue' },
+    ],
   },
-];
+] as const;
 
 export default function HomePage() {
   return (
@@ -125,7 +150,13 @@ export default function HomePage() {
               icon={SparkleIcon}
               title={skill.title}
               description={skill.description}
-            />
+            >
+              <div className="mt-4 flex flex-wrap gap-2">
+                {skill.label.map((item) => (
+                  <LabelBase key={item.text} text={item.text} color={item.color} />
+                ))}
+              </div>
+            </CarouselCard>
           ))}
         </CarouselBase>
       </ContentSection>

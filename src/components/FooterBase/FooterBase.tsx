@@ -15,28 +15,26 @@ interface FooterBaseProps {
 
 export function FooterBase({ logo, description, columns, children }: FooterBaseProps) {
   return (
-    <footer className="mt-auto">
-      <div className="mx-auto max-w-[1440px] px-6 py-10">
-        <div className="grid gap-8 lg:grid-cols-4">
-          <div>
-            <span className="mb-4 block w-[50px] h-[50px]">{logo}</span>
-            <p className="text-sm">{description}</p>
-          </div>
-          {columns.map((column) => (
-            <div key={column.title}>
-              <p className="mb-2 font-medium">{column.title}</p>
-              <ul className="space-y-1">
-                {column.links.map((link) => (
-                  <FooterBaseLink key={link.label} href={link.href}>
-                    {link.label}
-                  </FooterBaseLink>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className="lg:mx-12 py-5 mt-12 border-t border-line">
+      <div className="gap-8">
+        <div className="flex gap-4  items-center">
+          <div className="w-7.5 h-7.5">{logo}</div>
+          <p className="text-sm">{description}</p>
         </div>
-        <div className="mt-8 flex flex-row items-center justify-between">{children}</div>
+        {columns.map((column) => (
+          <div key={column.title}>
+            <p className="mb-2 font-medium">{column.title}</p>
+            <ul className="space-y-1">
+              {column.links.map((link) => (
+                <FooterBaseLink key={link.label} href={link.href}>
+                  {link.label}
+                </FooterBaseLink>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
+      <div className="flex flex-row items-center justify-between">{children}</div>
     </footer>
   );
 }

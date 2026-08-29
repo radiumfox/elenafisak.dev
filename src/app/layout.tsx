@@ -12,37 +12,40 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <body>
-        <div className="flex min-h-screen flex-col">
+        <div className="flex flex-col lg:h-dvh">
           <HeaderBase logo={<Logo/>} links={SOCIAL_LINKS} />
 
           <MenuDropdown links={NAV_LINKS} />
 
-          <div className="px-6">
-            <div className="relative mx-auto max-w-[1440px] py-10 lg:flex lg:flex-row">
+          <div className="px-6 lg:min-h-0 lg:flex-1">
+            <div className="mx-auto max-w-[1440px] lg:flex lg:min-h-0 lg:flex-row lg:py-0">
               <SidebarBase links={NAV_LINKS} />
-              {children}
+              <div className="lg:min-h-0 lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">{/*this*/}
+                <div>
+                  {children}
+                </div>
+                <FooterBase logo={<Logo />} description="Short description of the site or developer." columns={[]}>
+                  <p className="text-sm">{COPYRIGHT}</p>
+                  <div className="flex items-center gap-4">
+                    {SOCIAL_LINKS.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target={link.target}
+                          rel="noreferrer"
+                          className="text-current transition-opacity hover:opacity-70"
+                        >
+                          <Icon className="h-5 w-5" />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </FooterBase>
+              </div>
             </div>
           </div>
-
-          <FooterBase logo={<Logo />} description="Short description of the site or developer." columns={[]}>
-            <p className="text-sm">{COPYRIGHT}</p>
-            <div className="flex items-center gap-4">
-              {SOCIAL_LINKS.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target={link.target}
-                    rel="noreferrer"
-                    className="text-current transition-opacity hover:opacity-70"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
-          </FooterBase>
         </div>
       </body>
     </html>

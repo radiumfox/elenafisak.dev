@@ -6,7 +6,7 @@ import type { SectionLink, SocialLink } from './types';
 export const NAV_LINKS: SectionLink[] = [
   { label: 'Intro', id: 'intro' },
   { label: 'Experience', id: 'experience' },
-  { label: 'Work', id: 'work' },
+  { label: 'Skills', id: 'skills' },
   { label: 'Contacts', id: 'contacts' },
 ];
 

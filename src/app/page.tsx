@@ -2,6 +2,7 @@ import { ContentSection } from '@/components/ContentSection';
 import { FeatureCards } from '@/components/FeatureCards';
 import type { FeatureCardItem } from '@/components/FeatureCards';
 import { SparkleIcon } from '@/lib/icons/SparkleIcon';
+import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 
 const FEATURE_ITEMS: FeatureCardItem[] = [
   {
@@ -54,6 +55,33 @@ const FEATURE_ITEMS: FeatureCardItem[] = [
   },
 ];
 
+const SKILLS = [
+  {
+    title: '@nuxt/ui',
+    description: 'The intuitive UI library powered by Reka UI and Tailwind CSS.',
+  },
+  {
+    title: '@nuxt/content',
+    description: 'The file-based CMS with support for Markdown, YAML, and JSON.',
+  },
+  {
+    title: '@nuxt/devtools',
+    description: 'Visual tools that help you know your application better.',
+  },
+  {
+    title: '@nuxt/image',
+    description: 'Add images with progressive processing, lazy loading, and resizing.',
+  },
+  {
+    title: '@nuxt/icon',
+    description: 'Icon module for Nuxt with thousands of ready-to-use icons.',
+  },
+  {
+    title: '@nuxt/eslint',
+    description: 'Project-aware, easy-to-use, extensible and future-proof linting.',
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="mt-[140px] w-full min-w-0 px-1 md:px-6 lg:px-12 lg:pr-6 space-y-16">
@@ -71,7 +99,7 @@ export default function HomePage() {
           <div className="space-y-3">
             <span className="block h-1 w-12 rounded-full bg-accent" />
             <h2 className="text-4xl font-bold tracking-tight">
-              Everything I know, nothing I do not
+              More details about how I can help you
             </h2>
             <p className="text-muted">
               Where I have worked and what I built along the way.
@@ -81,11 +109,25 @@ export default function HomePage() {
         </div>
       </ContentSection>
 
-      <ContentSection id="work">
-        <h1 className="text-4xl font-bold">Work</h1>
-        <p>A selection of my projects.</p>
-        <h2 className="text-2xl font-semibold">Projects</h2>
-        <p>Details about notable work.</p>
+      <ContentSection id="skills">
+        <div className="space-y-3">
+          <span className="block h-1 w-12 rounded-full bg-accent" />
+          <h2 className="text-4xl font-bold tracking-tight">Skills</h2>
+          <p className="text-muted">
+            Technologies I know
+          </p>
+        </div>
+
+        <CarouselBase slidesPerView={3} navigation autoplay autoplayDelay={3000}>
+          {SKILLS.map((skill) => (
+            <CarouselCard
+              key={skill.title}
+              icon={SparkleIcon}
+              title={skill.title}
+              description={skill.description}
+            />
+          ))}
+        </CarouselBase>
       </ContentSection>
 
       <ContentSection id="contacts">

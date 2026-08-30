@@ -16,7 +16,7 @@ interface HeaderBaseProps {
 
 export function HeaderBase({ logo, mobileLinks, desktopLinks }: HeaderBaseProps) {
   return (
-    <header className="sticky top-0 z-40 flex h-16 w-full items-center border-b border-line bg-background px-5 md:px-10">
+    <header className="sticky top-0 z-40 flex h-16 w-full items-center border-b border-line bg-background/70 px-5 backdrop-blur-md md:px-10">
       <nav className="flex w-full items-center justify-between">
         <Link className="h-[50px] w-[50px]" href="/">{logo}</Link>
         <div className="flex items-center gap-0.5 lg:hidden">

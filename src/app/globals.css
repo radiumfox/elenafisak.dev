@@ -64,3 +64,82 @@ body {
   line-height: 1.6;
 }
 
+.aurora-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 780px;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, var(--background) 100%);
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+}
+
+.aurora-blob-1 {
+  left: -15%;
+  top: -25%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(76, 255, 99, 0.6), transparent 65%);
+  animation: aurora-drift-1 18s ease-in-out infinite alternate;
+}
+
+.aurora-blob-2 {
+  right: -20%;
+  top: -10%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.5), transparent 65%);
+  animation: aurora-drift-2 22s ease-in-out infinite alternate;
+}
+
+.aurora-blob-3 {
+  bottom: 0;
+  left: 40%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.4), transparent 65%);
+  animation: aurora-drift-3 26s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(15%, 12%) scale(1.15); }
+}
+
+@keyframes aurora-drift-2 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-12%, -10%) scale(1.1); }
+}
+
+@keyframes aurora-drift-3 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(10%, -14%) scale(1.2); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .aurora-blob {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none;
+  }
+}
+

@@ -4,30 +4,47 @@ import { HeaderBase } from '@/components/HeaderBase';
 import { SidebarBase } from '@/components/SidebarBase';
 import { FooterBase } from '@/components/FooterBase';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
-import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router';
-import { COPYRIGHT } from '@/lib/copyrights/copyright';
+import { NAV_LINKS } from '@/lib/router';
+import { loadSiteData } from '@/lib/sanity/loadData';
+import { toHeaderLinks, toSocialLinks } from '@/lib/social';
+import { urlFor } from '@/lib/sanity/image';
 import { Logo } from '@/lib/icons/Logo';
 
 const MOBILE_HEADER_LINKS = NAV_LINKS.map((link) => ({ name: link.label, href: `#${link.id}` }));
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const { settings } = await loadSiteData();
+
+  const socialLinks = toSocialLinks(settings?.socials);
+  const headerLinks = toHeaderLinks(settings?.socials);
+  const copyright = settings?.copyright ?? '';
+  const footerDescription = settings?.footerDescription ?? '';
+  const avatarSrc = settings?.avatarImage
+    ? urlFor(settings.avatarImage).width(512).url()
+    : '';
+
   return (
     <html>
       <body>
+        <div className="aurora-page" aria-hidden="true">
+          <span className="aurora-blob aurora-blob-1" />
+          <span className="aurora-blob aurora-blob-2" />
+          <span className="aurora-blob aurora-blob-3" />
+        </div>
         <div className="flex flex-col">
-          <HeaderBase logo={<Logo/>} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={SOCIAL_LINKS} />
+          <HeaderBase logo={<Logo/>} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={headerLinks} />
 
           <div className="px-6 lg:min-h-0 lg:flex-1">
             <div className="mx-auto max-w-[1440px] lg:flex lg:min-h-0 lg:flex-row lg:py-0 px-6 lg:min-h-0 lg:flex-1">
-              <SidebarBase links={NAV_LINKS} />
+              <SidebarBase links={NAV_LINKS} avatarSrc={avatarSrc} />
               <div className="lg:min-h-0 lg:h-[100vh-64px] lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">
                 <div>
                   {children}
                 </div>
-                <FooterBase logo={<Logo />} description="Short description of the site or developer." columns={[]}>
-                  <p className="text-sm">{COPYRIGHT}</p>
+                <FooterBase logo={<Logo />} description={footerDescription} columns={[]}>
+                  <p className="text-sm">{copyright}</p>
                   <div className="flex items-center gap-4">
-                    {SOCIAL_LINKS.map((link) => {
+                    {socialLinks.map((link) => {
                       const Icon = link.icon;
                       return (
                         <a

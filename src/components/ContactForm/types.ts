@@ -1,5 +1,6 @@
 export interface ContactFormFields {
-  fullName: string;
-  companyEmail: string;
+  name: string;
+  email: string;
+  subject: string;
   help: string;
 }

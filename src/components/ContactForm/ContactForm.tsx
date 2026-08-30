@@ -9,14 +9,15 @@ export function ContactForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
     const fields: ContactFormFields = {
-      fullName: String(formData.get('fullName') ?? ''),
-      companyEmail: String(formData.get('companyEmail') ?? ''),
+      name: String(formData.get('name') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      subject: String(formData.get('subject') ?? ''),
       help: String(formData.get('help') ?? ''),
     };
 
-    const subject = encodeURIComponent(`Contact from ${fields.fullName}`);
+    const subject = encodeURIComponent(fields.subject || `Contact from ${fields.name}`);
     const body = encodeURIComponent(
-      `Full name: ${fields.fullName}\nCompany email: ${fields.companyEmail}\n\n${fields.help}`
+      `Name: ${fields.name}\nEmail: ${fields.email}\nSubject: ${fields.subject}\n\n${fields.help}`
     );
     window.location.href = `mailto:hello@elenafisak.dev?subject=${subject}&body=${body}`;
   };
@@ -24,19 +25,26 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-6">
       <FieldBase
-        id="fullName"
-        label="Full name"
-        placeholder="Jane Doe"
+        id="name"
+        label="Name"
+        placeholder="Your Name"
         type="text"
         required
       />
 
       <FieldBase
-        id="companyEmail"
-        label="Company / physical entity email"
-        placeholder="you@company.com"
+        id="email"
+        label="Email"
+        placeholder="your.email@example.com"
         type="email"
         required
+      />
+
+      <FieldBase
+        id="subject"
+        label="Subject"
+        placeholder="Subject"
+        type="text"
       />
 
       <FieldBase

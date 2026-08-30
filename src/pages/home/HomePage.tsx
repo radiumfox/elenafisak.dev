@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { ContentSection } from '@/components/ContentSection';
 import { FeatureCards } from '@/components/FeatureCards';
 import type { FeatureCardItem } from '@/components/FeatureCards';
@@ -10,21 +11,41 @@ import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 import { ContactForm } from '@/components/ContactForm';
 import { BannerBase } from '@/components/BannerBase';
 import { urlFor } from '@/lib/sanity/image';
+import { getSocialLink } from '@/lib/social';
 import type { HomePageProps } from './types';
 
 export function HomePage({ data }: HomePageProps) {
   const { skills, experience, projects, settings } = data;
 
-  const featureItems: FeatureCardItem[] = (experience ?? []).map((entry) => ({
-    id: entry.name,
-    icon: SparkleIcon,
-    title: entry.title,
-    description: entry.description,
-  }));
+  const linkedinUrl = getSocialLink(settings?.socials, 'linkedin');
 
-  const bannerSrc = settings?.contactsBannerImage
-    ? urlFor(settings.contactsBannerImage).width(1200).url()
-    : '';
+  const featureAction = useMemo(
+    () => ({
+      title: 'Reach out to me',
+      href: linkedinUrl ?? '#',
+      linkText: 'To LinkedIn',
+    }),
+    [linkedinUrl],
+  );
+
+  const featureItems = useMemo<FeatureCardItem[]>(
+    () =>
+      (experience ?? []).map((entry) => ({
+        id: entry.name,
+        icon: SparkleIcon,
+        title: entry.title,
+        description: entry.description,
+      })),
+    [experience],
+  );
+
+  const bannerSrc = useMemo(
+    () =>
+      settings?.contactsBannerImage
+        ? urlFor(settings.contactsBannerImage).width(1200).url()
+        : '',
+    [settings],
+  );
   const bannerText = settings?.contactsBannerText ?? '';
 
   return (
@@ -50,7 +71,10 @@ export function HomePage({ data }: HomePageProps) {
               Where I have worked and what I built along the way.
             </p>
           </div>
-          <FeatureCards items={featureItems} action={{ title: 'Reach out to me', href: 'https://www.linkedin.com/', linkText: 'To LinkedIn' }} />
+          <FeatureCards
+            items={featureItems}
+            action={featureAction}
+          />
         </div>
       </ContentSection>
 

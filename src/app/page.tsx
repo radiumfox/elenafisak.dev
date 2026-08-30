@@ -131,9 +131,9 @@ export default function HomePage() {
   return (
     <main className="mt-[140px] w-full min-w-0 px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
       <ContentSection id="intro">
-        <p className="text-2xl opacity-80">Hi, I&#39;m Elena.</p>
-        <h1 className="text-4xl font-bold">I&#39;m a senior frontend engineer.</h1>
-        <div className="space-y-4 opacity-80 max-w-[800px]">
+        <p className="text-eyebrow text-muted">Hi, I&#39;m Elena.</p>
+        <h1 className="text-heading font-bold">I&#39;m a senior frontend engineer.</h1>
+        <div className="space-y-4 text-muted max-w-[800px]">
           <p>With 5 years of experience building B2B and B2C SaaS products and shared design systems, I work across TypeScript, React, and Vue to turn ambitious ideas into fast, scalable, maintainable software.</p>
           <p>I like owning things end-to-end — from the first architectural sketch to the final deploy — and I&#39;m equally happy deep in a tricky frontend problem or helping a teammate untangle one. I care about good abstractions, great developer experience, and shipping software that holds up over time.</p>
         </div>
@@ -143,7 +143,7 @@ export default function HomePage() {
         <div className="space-y-12">
           <div className="space-y-3">
             <span className="block h-1 w-12 rounded-full bg-accent" />
-            <h2 className="text-4xl font-bold tracking-tight">
+            <h2 className="text-heading font-bold tracking-tight">
               More details about how I can help you
             </h2>
             <p className="text-muted">
@@ -157,7 +157,7 @@ export default function HomePage() {
       <ContentSection id="skills">
         <div className="space-y-3">
           <span className="block h-1 w-12 rounded-full bg-accent" />
-          <h2 className="text-4xl font-bold tracking-tight">Skills</h2>
+          <h2 className="text-heading font-bold tracking-tight">Skills</h2>
           <p className="text-muted">
             Technologies I know
           </p>
@@ -183,7 +183,7 @@ export default function HomePage() {
 
       <ContentSection id="works">
         <div className="space-y-10">
-          <h2 className="text-4xl font-bold tracking-tight">
+          <h2 className="text-heading font-bold tracking-tight">
             I&#39;m currently working on
           </h2>
 
@@ -211,7 +211,7 @@ export default function HomePage() {
               text="Got a project in mind? Let's build something amazing."
             />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight">Get in touch</h1>
+          <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
           <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
           <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
             <ContactForm onSubmit={() => {}} className="xl:max-w-[55%]" />

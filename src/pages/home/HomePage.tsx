@@ -12,6 +12,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { BannerBase } from '@/components/BannerBase';
 import { urlFor } from '@/lib/sanity/image';
 import { getSocialLink } from '@/lib/social';
+import { getExperienceIcon } from './experienceIcon';
 import type { HomePageProps } from './types';
 
 export function HomePage({ data }: HomePageProps) {
@@ -32,7 +33,7 @@ export function HomePage({ data }: HomePageProps) {
     () =>
       (experience ?? []).map((entry) => ({
         id: entry.name,
-        icon: SparkleIcon,
+        icon: getExperienceIcon(entry.name),
         title: entry.title,
         description: entry.description,
       })),

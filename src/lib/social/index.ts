@@ -1,2 +1,2 @@
-export * from './socialLinks';
-export * from './types';
+export { getSocialLink, toSocialLinks, toHeaderLinks } from './socialLinks';
+export type { SocialNetworkName, SocialIconName } from './types';

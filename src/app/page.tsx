@@ -1,4 +1,4 @@
-import { HomePage as HomePageView } from '@/pages/home';
+import { HomePage as HomePageView } from '@/views/home';
 import { loadSiteData } from '@/lib/sanity/loadData';
 
 export default async function HomePage() {

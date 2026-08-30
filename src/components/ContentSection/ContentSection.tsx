@@ -7,7 +7,7 @@ interface ContentSectionProps {
 
 export function ContentSection({ id, children }: ContentSectionProps) {
   return (
-    <section id={id} className="scroll-mt-16">
+    <section id={id} className="scroll-mt-18">
       <article className="space-y-4">{children}</article>
     </section>
   );

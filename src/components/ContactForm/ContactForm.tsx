@@ -1,25 +1,26 @@
-import type { FormEvent } from 'react';
+import type { SubmitEvent  } from 'react';
 
 import { FieldBase } from '@/components/FieldBase';
-import type { ContactFormFields } from './types';
+import { useContactFormValidation } from './useContactFormValidation';
+import type { ContactFormFields, ContactFormProps } from './types';
 
-export function ContactForm() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+export function ContactForm({ onSubmit }: ContactFormProps) {
+  const { values, errors, hasErrors, handleChange, handleBlur, validate } = useContactFormValidation();
+
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
+    if (hasErrors || !validate()) {
+      return;
+    }
+
     const fields: ContactFormFields = {
-      name: String(formData.get('name') ?? ''),
-      email: String(formData.get('email') ?? ''),
-      subject: String(formData.get('subject') ?? ''),
-      help: String(formData.get('help') ?? ''),
+      name: values.name,
+      email: values.email,
+      subject: values.subject,
+      help: values.help,
     };
 
-    const subject = encodeURIComponent(fields.subject || `Contact from ${fields.name}`);
-    const body = encodeURIComponent(
-      `Name: ${fields.name}\nEmail: ${fields.email}\nSubject: ${fields.subject}\n\n${fields.help}`
-    );
-    window.location.href = `mailto:hello@elenafisak.dev?subject=${subject}&body=${body}`;
+    onSubmit(fields);
   };
 
   return (
@@ -30,6 +31,10 @@ export function ContactForm() {
         placeholder="Your Name"
         type="text"
         required
+        value={values.name}
+        onChange={handleChange('name')}
+        onBlur={handleBlur('name')}
+        error={errors.name}
       />
 
       <FieldBase
@@ -38,6 +43,10 @@ export function ContactForm() {
         placeholder="your.email@example.com"
         type="email"
         required
+        value={values.email}
+        onChange={handleChange('email')}
+        onBlur={handleBlur('email')}
+        error={errors.email}
       />
 
       <FieldBase
@@ -45,6 +54,9 @@ export function ContactForm() {
         label="Subject"
         placeholder="Subject"
         type="text"
+        value={values.subject}
+        onChange={handleChange('subject')}
+        onBlur={handleBlur('subject')}
       />
 
       <FieldBase
@@ -52,11 +64,17 @@ export function ContactForm() {
         label="How can I help you?"
         placeholder="Tell me about your project"
         type="textarea"
+        required
+        value={values.help}
+        onChange={handleChange('help')}
+        onBlur={handleBlur('help')}
+        error={errors.help}
       />
 
       <button
         type="submit"
-        className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+        disabled={hasErrors}
+        className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50"
       >
         Send your message
       </button>

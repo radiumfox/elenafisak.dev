@@ -1,2 +1,2 @@
 export { ContactForm } from './ContactForm';
-export type { ContactFormFields } from './types';
+export type { ContactFieldName, ContactFormErrors, ContactFormFields, ContactFormProps, UseContactFormValidation } from './types';

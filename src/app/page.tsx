@@ -212,10 +212,10 @@ export default function HomePage() {
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
             <div className="flex flex-col gap-y-4 justify-between">
               <h3 className="text-3xl font-bold">Socials</h3>
-              <SocialsList className="grid grid-cols-2 gap-y-4 xl:block xl:space-y-2" items={SOCIAL_LINKS} />
+              <SocialsList className="grid grid-cols-2 gap-y-4 xl:block xl:space-y-4" items={SOCIAL_LINKS} />
             </div>
           </div>
-          <ContactForm />
+          <ContactForm onSubmit={() => {}} />
         </div>
 
       </ContentSection>

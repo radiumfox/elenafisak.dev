@@ -129,7 +129,7 @@ const STEPS = [
 
 export default function HomePage() {
   return (
-    <main className="mt-[140px] w-full min-w-0 px-1 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
+    <main className="mt-[140px] w-full min-w-0 px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
       <ContentSection id="intro">
         <p className="text-2xl opacity-80">Hi, I&#39;m Elena.</p>
         <h1 className="text-4xl font-bold">I&#39;m a senior frontend engineer.</h1>

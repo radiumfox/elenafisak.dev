@@ -32,12 +32,15 @@ export function CarouselBase({
     <div className="carousel-base w-full">
       <Swiper
         modules={[Navigation, Autoplay]}
-        slidesPerView={slidesPerView}
+        slidesPerView={2}
+        breakpoints={{
+          1024: { slidesPerView },
+        }}
         spaceBetween={16}
         navigation={false}
         autoplay={
           autoplay
-            ? { delay: autoplayDelay, disableOnInteraction: false }
+            ? { delay: autoplayDelay, disableOnInteraction: false, pauseOnMouseEnter: true }
             : undefined
         }
         onSwiper={(swiper) => {

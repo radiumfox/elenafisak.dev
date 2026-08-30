@@ -4,4 +4,5 @@ export type SocialItem = SocialLink;
 
 export interface SocialsListProps {
   items: SocialItem[];
+  className?: string;
 }

@@ -1,8 +1,8 @@
 import type { SocialItem, SocialsListProps } from './types';
 
-export function SocialsList({ items }: SocialsListProps) {
+export function SocialsList({ items, className }: SocialsListProps) {
   return (
-    <ul className="space-y-2">
+    <ul className={className ?? 'space-y-2'}>
       {items.map((item: SocialItem) => (
         <li key={item.name}>
           <a

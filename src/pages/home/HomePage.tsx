@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 import { ContentSection } from '@/components/ContentSection';
 import { FeatureCards } from '@/components/FeatureCards';
 import type { FeatureCardItem } from '@/components/FeatureCards';
-import { SparkleIcon } from '@/lib/icons/SparkleIcon';
 import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
@@ -12,7 +11,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { BannerBase } from '@/components/BannerBase';
 import { urlFor } from '@/lib/sanity/image';
 import { getSocialLink } from '@/lib/social';
-import { getExperienceIcon } from './experienceIcon';
+import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
 
 export function HomePage({ data }: HomePageProps) {
@@ -92,7 +91,7 @@ export function HomePage({ data }: HomePageProps) {
           {(skills ?? []).map((skill) => (
             <CarouselCard
               key={skill._id}
-              icon={SparkleIcon}
+              icon={getSkillIcon(skill.title)}
               title={skill.title}
               description={skill.description}
             >

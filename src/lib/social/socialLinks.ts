@@ -2,7 +2,7 @@ import type { SocialLink as SocialLinkType } from '@/lib/sanity/types';
 import type { SocialLink } from '@/lib/router';
 import type { HeaderLink } from '@/components/HeaderBase';
 import type { SocialNetworkName } from './types';
-import { getSocialIcon } from './socialIcon';
+import { getSocialIcon } from '@/lib/icons/mappings';
 
 export function getSocialLink(
   socials: SocialLinkType[] | undefined,

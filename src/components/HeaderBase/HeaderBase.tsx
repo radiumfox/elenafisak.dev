@@ -3,7 +3,7 @@ import { HeaderBaseLink } from './HeaderBaseLink';
 import Link from 'next/link';
 
 export interface HeaderLink {
-  label: string;
+  name: string;
   href?: string;
   target?: string;
 }
@@ -20,8 +20,8 @@ export function HeaderBase({ logo, links }: HeaderBaseProps) {
         <Link className="h-[50px] w-[50px]" href="/">{logo}</Link>
         <div className="flex items-center gap-0.5">
           {links.map((link) => (
-            <HeaderBaseLink key={link.label} href={link.href} target={link.target}>
-              {link.label}
+            <HeaderBaseLink key={link.name} href={link.href} target={link.target}>
+              {link.name}
             </HeaderBaseLink>
           ))}
         </div>

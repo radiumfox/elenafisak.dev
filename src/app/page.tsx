@@ -8,6 +8,8 @@ import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 import { ContactForm } from '@/components/ContactForm';
+import { SocialsList } from '@/components/SocialsList';
+import { SOCIAL_LINKS } from '@/lib/router';
 
 const FEATURE_ITEMS: FeatureCardItem[] = [
   {
@@ -203,10 +205,19 @@ export default function HomePage() {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <h1 className="text-4xl font-bold">Contacts</h1>
-        <p>Ways to get in touch with me.</p>
+
         <div className="flex gap-x-6">
-          <div className="w-full">Contacts list</div>
+          <div className="w-full space-y-4">
+            <h1 className="text-4xl font-bold tracking-tight">Get in touch</h1>
+            <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
+            <div className="flex flex-col gap-y-4 justify-between">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-bold">Socials</h3>
+                <SocialsList items={SOCIAL_LINKS} />
+              </div>
+              <a className="text-2xl" href="mailto:example@gmail.com" target="_blank">example@gmail.com</a>
+            </div>
+          </div>
           <ContactForm />
         </div>
 

@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                       const Icon = link.icon;
                       return (
                         <a
-                          key={link.label}
+                          key={link.name}
                           href={link.href}
                           target={link.target}
                           rel="noreferrer"

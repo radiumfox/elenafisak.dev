@@ -18,6 +18,9 @@ Use pnpm for all dependency operations and scripts (never npm or yarn, which wou
 
 ## Language and Frameworks Specification
 
+### Icons
+When an icon is needed, create it in `src/lib/icons/` (following the existing icon conventions, e.g. accepting `SVGProps<SVGSVGElement>` and a `className`) and import it from there — never implement a local/inline SVG inside a component.
+
 ### TypeScript
 Use `interfaces` instead of `types` where possible.
 

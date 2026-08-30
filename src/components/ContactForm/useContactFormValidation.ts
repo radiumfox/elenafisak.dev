@@ -4,6 +4,8 @@ import type { ContactFieldName, ContactFormErrors, ContactFormFields, UseContact
 
 const REQUIRED_FIELDS: ContactFieldName[] = ['name', 'email', 'help'];
 
+const EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
 const EMPTY_VALUES: ContactFormFields = {
   name: '',
   email: '',
@@ -16,8 +18,12 @@ export function useContactFormValidation(initialValues: ContactFormFields = EMPT
   const [errors, setErrors] = useState<ContactFormErrors>({});
 
   const validateField = (field: ContactFieldName): string | undefined => {
-    if (REQUIRED_FIELDS.includes(field) && !values[field].trim()) {
+    const value = values[field].trim();
+    if (REQUIRED_FIELDS.includes(field) && !value) {
       return 'This field is required';
+    }
+    if (field === 'email' && value && !EMAIL_REGEX.test(value)) {
+      return 'Enter a valid email address';
     }
     return undefined;
   };

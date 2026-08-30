@@ -9,6 +9,7 @@ export interface ContactFormFields {
 
 export interface ContactFormProps {
   onSubmit: (fields: ContactFormFields) => void;
+  loading?: boolean;
 }
 
 export type ContactFieldName = keyof ContactFormFields;

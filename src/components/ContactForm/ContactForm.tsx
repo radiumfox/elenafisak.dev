@@ -1,15 +1,16 @@
-import type { SubmitEvent  } from 'react';
+import type { FormEvent } from 'react';
 
 import { FieldBase } from '@/components/FieldBase';
+import { SpinnerIcon } from '@/lib/icons/SpinnerIcon';
 import { useContactFormValidation } from './useContactFormValidation';
 import type { ContactFormFields, ContactFormProps } from './types';
 
-export function ContactForm({ onSubmit }: ContactFormProps) {
+export function ContactForm({ onSubmit, loading = false }: ContactFormProps) {
   const { values, errors, hasErrors, handleChange, handleBlur, validate } = useContactFormValidation();
 
-  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (hasErrors || !validate()) {
+    if (hasErrors || loading || !validate()) {
       return;
     }
 
@@ -73,10 +74,11 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
 
       <button
         type="submit"
-        disabled={hasErrors}
-        className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50"
+        disabled={hasErrors || loading}
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50 cursor-pointer"
       >
-        Send your message
+        {loading && <SpinnerIcon className="h-4 w-4 animate-spin" />}
+        {loading ? 'Sending...' : 'Send your message'}
       </button>
     </form>
   );

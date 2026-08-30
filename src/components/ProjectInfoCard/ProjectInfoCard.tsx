@@ -1,5 +1,6 @@
 import { NumberedList } from '@/components/NumberedList';
 import { ExternalLinkIcon } from '@/lib/icons/ExternalLinkIcon';
+import { PlayIcon } from '@/lib/icons/PlayIcon';
 import type { ProjectInfoCardProps } from './types';
 
 export function ProjectInfoCard({
@@ -13,7 +14,7 @@ export function ProjectInfoCard({
     <video src={videoSrc} controls className="h-full w-full object-cover" />
   ) : (
     <div className="flex h-full w-full items-center justify-center text-muted">
-      <span className="text-sm font-medium">Video placeholder</span>
+      <PlayIcon className="h-12 w-12" />
     </div>
   );
 
@@ -22,7 +23,7 @@ export function ProjectInfoCard({
       <div className="min-w-0 space-y-5 shrink-0">
         <h3 className="text-2xl font-semibold">{title}</h3>
 
-        <div className="w-1/2 aspect-video overflow-hidden rounded-2xl border border-line bg-subtle/40 xl:hidden">
+        <div className="max-w-[500px] aspect-video overflow-hidden rounded-2xl border border-line bg-subtle/40 xl:hidden">
           {videoNode}
         </div>
 

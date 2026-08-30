@@ -3,22 +3,21 @@ import type { ReactNode } from 'react';
 import { HeaderBase } from '@/components/HeaderBase';
 import { SidebarBase } from '@/components/SidebarBase';
 import { FooterBase } from '@/components/FooterBase';
-import { MenuDropdown } from '@/components/MenuDropdown';
 import { NAV_LINKS, SOCIAL_LINKS } from '@/lib/router';
 import { COPYRIGHT } from '@/lib/copyrights/copyright';
 import { Logo } from '@/lib/icons/Logo';
+
+const MOBILE_HEADER_LINKS = NAV_LINKS.map((link) => ({ name: link.label, href: `#${link.id}` }));
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <body>
         <div className="flex flex-col">
-          <HeaderBase logo={<Logo/>} links={SOCIAL_LINKS} />
-
-          <MenuDropdown links={NAV_LINKS} />
+          <HeaderBase logo={<Logo/>} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={SOCIAL_LINKS} />
 
           <div className="px-6 lg:min-h-0 lg:flex-1">
-            <div className="mx-auto max-w-[1440px] lg:flex lg:min-h-0 lg:flex-row lg:py-0">
+            <div className="mx-auto max-w-[1440px] lg:flex lg:min-h-0 lg:flex-row lg:py-0 px-6 lg:min-h-0 lg:flex-1">
               <SidebarBase links={NAV_LINKS} />
               <div className="lg:min-h-0 lg:h-[100vh-64px] lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">
                 <div>

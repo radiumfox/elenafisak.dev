@@ -1,14 +1,14 @@
-import type { FormEvent } from 'react';
+import type { SubmitEvent } from 'react';
 
 import { FieldBase } from '@/components/FieldBase';
 import { SpinnerIcon } from '@/lib/icons/SpinnerIcon';
 import { useContactFormValidation } from './useContactFormValidation';
 import type { ContactFormFields, ContactFormProps } from './types';
 
-export function ContactForm({ onSubmit, loading = false }: ContactFormProps) {
+export function ContactForm({ onSubmit, loading = false, className }: ContactFormProps) {
   const { values, errors, hasErrors, handleChange, handleBlur, validate } = useContactFormValidation();
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (hasErrors || loading || !validate()) {
       return;
@@ -25,7 +25,7 @@ export function ContactForm({ onSubmit, loading = false }: ContactFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-xl space-y-6">
+    <form onSubmit={handleSubmit} className={`w-full space-y-6 ${className ?? ''}`}>
       <FieldBase
         id="name"
         label="Name"

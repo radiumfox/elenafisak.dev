@@ -8,8 +8,7 @@ import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 import { ContactForm } from '@/components/ContactForm';
-import { SocialsList } from '@/components/SocialsList';
-import { SOCIAL_LINKS } from '@/lib/router';
+import { BannerBase } from '@/components/BannerBase';
 
 const FEATURE_ITEMS: FeatureCardItem[] = [
   {
@@ -205,19 +204,24 @@ export default function HomePage() {
       </ContentSection>
 
       <ContentSection id="contacts">
-
-        <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
-          <div className="w-full space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight">Get in touch</h1>
-            <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
-            <div className="flex flex-col gap-y-4 justify-between">
-              <h3 className="text-3xl font-bold">Socials</h3>
-              <SocialsList className="grid grid-cols-2 gap-y-4 xl:block xl:space-y-4" items={SOCIAL_LINKS} />
-            </div>
+        <div className="w-full space-y-6">
+          <div className="flex flex-col gap-8 xl:hidden">
+            <BannerBase
+              imgSrc="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+              text="Got a project in mind? Let's build something amazing."
+            />
           </div>
-          <ContactForm onSubmit={() => {}} />
+          <h1 className="text-4xl font-bold tracking-tight">Get in touch</h1>
+          <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
+          <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
+            <ContactForm onSubmit={() => {}} className="xl:max-w-[55%]" />
+            <BannerBase
+              className="hidden xl:flex xl:w-1/2"
+              imgSrc="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+              text="Got a project in mind? Let's build something amazing."
+            />
+          </div>
         </div>
-
       </ContentSection>
     </main>
   );

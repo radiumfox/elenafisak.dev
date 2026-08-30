@@ -1,2 +1,2 @@
-export * from './routes';
-export * from './types';
+export { NAV_LINKS } from './routes';
+export type { SectionLink, SocialLink } from './types';

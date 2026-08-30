@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from 'next/cache';
 import { client } from './client';
 import type { Skill, ExperienceEntry, Project, SiteSettings } from './types';
 import {
@@ -15,6 +16,8 @@ export interface LoadedSiteData {
 }
 
 export async function loadSiteData(): Promise<LoadedSiteData> {
+  noStore();
+
   const [skills, experience, projects, settings] = await Promise.all([
     client.fetch<Skill[]>(skillsQuery),
     client.fetch<ExperienceEntry[]>(experienceQuery),

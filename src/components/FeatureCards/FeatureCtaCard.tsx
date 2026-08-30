@@ -1,3 +1,5 @@
+import { ArrowRightIcon } from '@/lib/icons/ArrowRightIcon';
+
 interface FeatureCtaCardProps {
   title: string;
   href: string;
@@ -6,7 +8,7 @@ interface FeatureCtaCardProps {
 
 export function FeatureCtaCard({ title, href, linkText }: FeatureCtaCardProps) {
   return (
-    <div className="flex flex-col justify-between gap-4 bg-background/60 p-6">
+    <div className="flex flex-col justify-between gap-4 bg-background/60 p-6 sm:col-span-2 lg:col-span-1">
       <h3 className="text-lg font-semibold">{title}</h3>
       <a
         href={href}
@@ -15,19 +17,7 @@ export function FeatureCtaCard({ title, href, linkText }: FeatureCtaCardProps) {
         className="inline-flex w-fit items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
       >
         {linkText}
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-4 w-4"
-          aria-hidden="true"
-        >
-          <path d="M5 12h14" />
-          <path d="m13 6 6 6-6 6" />
-        </svg>
+        <ArrowRightIcon className="h-4 w-4" />
       </a>
     </div>
   );

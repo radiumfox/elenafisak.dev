@@ -9,10 +9,22 @@ export function ProjectInfoCard({
   href,
   videoSrc,
 }: ProjectInfoCardProps) {
+  const videoNode = videoSrc ? (
+    <video src={videoSrc} controls className="h-full w-full object-cover" />
+  ) : (
+    <div className="flex h-full w-full items-center justify-center text-muted">
+      <span className="text-sm font-medium">Video placeholder</span>
+    </div>
+  );
+
   return (
-    <div className="flex w-full gap-x-6">
-      <div className="shrink-0 space-y-5">
+    <div className="flex w-full flex-col gap-6 xl:flex-row xl:gap-x-6">
+      <div className="min-w-0 space-y-5 shrink-0">
         <h3 className="text-2xl font-semibold">{title}</h3>
+
+        <div className="w-1/2 aspect-video overflow-hidden rounded-2xl border border-line bg-subtle/40 xl:hidden">
+          {videoNode}
+        </div>
 
         <p className="max-w-[560px] text-muted">{description}</p>
 
@@ -28,14 +40,8 @@ export function ProjectInfoCard({
         </a>
       </div>
 
-      <div className="w-full aspect-video overflow-hidden rounded-2xl border border-line bg-subtle/40">
-        {videoSrc ? (
-          <video src={videoSrc} controls className="h-full w-full object-cover" />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center text-muted">
-            <span className="text-sm font-medium">Video placeholder</span>
-          </div>
-        )}
+      <div className="hidden w-full aspect-video overflow-hidden rounded-2xl border border-line bg-subtle/40 xl:block">
+        {videoNode}
       </div>
     </div>
   );

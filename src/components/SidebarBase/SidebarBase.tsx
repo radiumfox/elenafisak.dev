@@ -18,21 +18,6 @@ export function SidebarBase({ links, avatarSrc }: SidebarBaseProps) {
   return (
     <aside className="hidden sticky top-[64px] py-5 h-[calc(100vh-64px)] w-[284px] shrink-0 flex-col justify-between border-r border-line pr-6 lg:flex">
       <nav className="flex flex-col overflow-y-scroll pb-4">
-        {avatarSrc ? (
-          <div className="relative mb-5 aspect-square w-1/2 overflow-hidden rounded-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={avatarSrc}
-              alt="Avatar"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 rounded-full bg-black/50" />
-          </div>
-        ) : (
-          <div className="mb-5 flex aspect-square w-1/2 items-center justify-center rounded-full bg-subtle text-faint">
-            <UserIcon className="h-1/2 w-1/2" />
-          </div>
-        )}
         <ul className="space-y-0.5">
           {links.map((link) => (
             <li key={link.id}>
@@ -42,6 +27,21 @@ export function SidebarBase({ links, avatarSrc }: SidebarBaseProps) {
             </li>
           ))}
         </ul>
+        {avatarSrc ? (
+          <div className="relative mt-5 aspect-square w-1/2 overflow-hidden rounded-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={avatarSrc}
+              alt="Avatar"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 rounded-full bg-black/50" />
+          </div>
+        ) : (
+          <div className="mt-5 flex aspect-square w-1/2 items-center justify-center rounded-full bg-subtle text-faint">
+            <UserIcon className="h-1/2 w-1/2" />
+          </div>
+        )}
       </nav>
     </aside>
   );

@@ -26,6 +26,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html>
       <body>
+        <div className="aurora-page" aria-hidden="true">
+          <span className="aurora-blob aurora-blob-1" />
+          <span className="aurora-blob aurora-blob-2" />
+          <span className="aurora-blob aurora-blob-3" />
+        </div>
         <div className="flex flex-col">
           <HeaderBase logo={<Logo/>} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={headerLinks} />
 

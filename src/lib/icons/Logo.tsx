@@ -3,31 +3,28 @@ import type { SVGProps } from 'react';
 export function Logo({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox="0 0 64 64"
+      viewBox="0 0 80 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       {...props}
     >
-      <circle
-        cx="32"
-        cy="32"
-        r="29"
-        stroke="currentColor"
-        strokeWidth="1"
-        opacity="0.3"
-      />
+      <defs>
+        <linearGradient id="logo-gradient" x1="0" y1="0" x2="80" y2="48" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#2ee048" />
+          <stop offset="100%" stopColor="#167a29" />
+        </linearGradient>
+      </defs>
       <text
-        x="32"
-        y="39.5"
+        x="40"
+        y="40"
         textAnchor="middle"
-        fill="currentColor"
-        fontSize="22"
+        fill="url(#logo-gradient)"
+        fontSize="38"
         fontFamily="Consolas, 'Courier New', monospace"
         fontWeight="700"
-        opacity="0.8"
       >
-        &lt;EF/&gt;
+        EF
       </text>
     </svg>
   );

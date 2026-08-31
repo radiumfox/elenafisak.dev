@@ -19,7 +19,6 @@ interface CarouselBaseProps {
 }
 
 export function CarouselBase({
-  slidesPerView = 3,
   navigation = true,
   autoplay = false,
   autoplayDelay = 3000,
@@ -29,12 +28,16 @@ export function CarouselBase({
   const slides = Array.isArray(children) ? children : [children];
 
   return (
-    <div className="carousel-base w-full">
+    <div className="carousel-base w-full overflow-visible">
       <Swiper
         modules={[Navigation, Autoplay]}
-        slidesPerView={2}
+        slidesPerView={1}
+        initialSlide={1}
+        loop={true}
         breakpoints={{
-          1024: { slidesPerView },
+          0: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1362: { slidesPerView: 3 },
         }}
         spaceBetween={16}
         navigation={false}

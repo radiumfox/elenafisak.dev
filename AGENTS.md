@@ -12,6 +12,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 This is a React landing page featuring information about the career path of a Senior Frontend Developer.
 
+## Workflow
+
+Before applying any changes to a file, always read the file's current content to check whether it has new changes since it was last seen (e.g. edits made by the user or another tool). Never edit based on a stale view of the file.
+
 ## Package Manager Specification
 
 Use pnpm for all dependency operations and scripts (never npm or yarn, which would generate `package-lock.json`). Pin exact, caret-less versions in `package.json`.

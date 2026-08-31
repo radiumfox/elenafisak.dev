@@ -1,6 +1,7 @@
 import type { SubmitEvent } from 'react';
 
 import { FieldBase } from '@/components/FieldBase';
+import { ButtonBase } from '@/components/ButtonBase';
 import { SpinnerIcon } from '@/lib/icons/SpinnerIcon';
 import { useContactFormValidation } from './useContactFormValidation';
 import type { ContactFormFields, ContactFormProps } from './types';
@@ -72,14 +73,14 @@ export function ContactForm({ onSubmit, loading = false, className }: ContactFor
         error={errors.help}
       />
 
-      <button
+      <ButtonBase
         type="submit"
         disabled={hasErrors || loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50 cursor-pointer"
+        className="px-6 py-3 cursor-pointer w-full"
       >
         {loading && <SpinnerIcon className="h-4 w-4 animate-spin" />}
         {loading ? 'Sending...' : 'Send your message'}
-      </button>
+      </ButtonBase>
     </form>
   );
 }

@@ -1,13 +1,14 @@
 ﻿import './globals.css';
 import type { ReactNode } from 'react';
+import { jetbrainsMono } from './fonts';
 import { HeaderBase } from '@/components/HeaderBase';
 import { SidebarBase } from '@/components/SidebarBase';
 import { FooterBase } from '@/components/FooterBase';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { NAV_LINKS } from '@/lib/router';
 import { loadSiteData } from '@/lib/sanity/loadData';
+import { fileUrlFor } from '@/lib/sanity/image';
 import { toHeaderLinks, toSocialLinks } from '@/lib/social';
-import { urlFor } from '@/lib/sanity/image';
 import { Logo } from '@/lib/icons/Logo';
 
 const MOBILE_HEADER_LINKS = NAV_LINKS.map((link) => ({ name: link.label, href: `#${link.id}` }));
@@ -19,12 +20,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const headerLinks = toHeaderLinks(settings?.socials);
   const copyright = settings?.copyright ?? '';
   const footerDescription = settings?.footerDescription ?? '';
-  const avatarSrc = settings?.avatarImage
-    ? urlFor(settings.avatarImage).width(512).url()
-    : '';
+  const downloadCvHref = fileUrlFor(settings?.cv ?? null);
 
   return (
-    <html>
+    <html className={jetbrainsMono.variable}>
       <body>
         <div className="aurora-page" aria-hidden="true">
           <span className="aurora-blob aurora-blob-1" />
@@ -32,11 +31,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <span className="aurora-blob aurora-blob-3" />
         </div>
         <div className="flex flex-col">
-          <HeaderBase logo={<Logo/>} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={headerLinks} />
+          <HeaderBase logo={<Logo />} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={headerLinks} />
 
           <div className="mx-auto w-full max-w-[1440px] px-6 lg:min-h-0 lg:flex-1">
             <div className="lg:flex lg:min-h-0 lg:flex-row lg:py-0 lg:min-h-0 lg:flex-1">
-              <SidebarBase links={NAV_LINKS} avatarSrc={avatarSrc} />
+              <SidebarBase links={NAV_LINKS} downloadCvHref={downloadCvHref} />
               <div className="lg:min-h-0 lg:h-[100vh-64px] lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">
                 <div>
                   {children}

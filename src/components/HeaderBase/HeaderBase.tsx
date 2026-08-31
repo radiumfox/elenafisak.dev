@@ -18,7 +18,7 @@ export function HeaderBase({ logo, mobileLinks, desktopLinks }: HeaderBaseProps)
   return (
     <header className="sticky top-0 z-40 h-16 w-full border-b border-line bg-background/70 backdrop-blur-md">
       <nav className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-6">
-        <Link className="h-[50px] w-[50px]" href="/">{logo}</Link>
+        <Link className="w-[70px]" href="/">{logo}</Link>
         <div className="flex items-center gap-0.5 lg:hidden">
           {mobileLinks.map((link) => (
             <HeaderBaseLink key={link.name} href={link.href} target={link.target}>

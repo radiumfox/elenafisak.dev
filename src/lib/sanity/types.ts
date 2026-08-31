@@ -57,6 +57,10 @@ export interface SiteSettings {
     _type: 'image';
     asset: { _ref: string; _type: 'reference' };
   };
+  cv?: {
+    _type: 'file';
+    asset: { _ref: string; _type: 'reference' };
+  };
   footerDescription: string;
   copyright: string;
 }

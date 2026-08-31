@@ -8,13 +8,13 @@ import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 import { ContactForm } from '@/components/ContactForm';
-import { BannerBase } from '@/components/BannerBase';
-import { urlFor } from '@/lib/sanity/image';
+import { ButtonBase } from '@/components/ButtonBase';
+import { DownloadIcon } from '@/lib/icons/DownloadIcon';
 import { getSocialLink } from '@/lib/social';
 import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
 
-export function HomePage({ data }: HomePageProps) {
+export function HomePage({ data, downloadCvHref }: HomePageProps) {
   const { skills, experience, projects, settings } = data;
 
   const linkedinUrl = getSocialLink(settings?.socials, 'linkedin');
@@ -39,15 +39,6 @@ export function HomePage({ data }: HomePageProps) {
     [experience],
   );
 
-  const bannerSrc = useMemo(
-    () =>
-      settings?.contactsBannerImage
-        ? urlFor(settings.contactsBannerImage).width(1200).url()
-        : '',
-    [settings],
-  );
-  const bannerText = settings?.contactsBannerText ?? '';
-
   return (
     <main className="mt-[140px] w-full min-w-0 px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
       <ContentSection id="intro">
@@ -58,6 +49,11 @@ export function HomePage({ data }: HomePageProps) {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+        {downloadCvHref && (
+          <div className="lg:hidden pt-2">
+            <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="secondary" icon={DownloadIcon} />
+          </div>
+        )}
       </ContentSection>
 
       <ContentSection id="experience">
@@ -87,7 +83,7 @@ export function HomePage({ data }: HomePageProps) {
           </p>
         </div>
 
-        <CarouselBase slidesPerView={3} navigation autoplay autoplayDelay={3000}>
+        <CarouselBase navigation autoplay autoplayDelay={3000}>
           {(skills ?? []).map((skill) => (
             <CarouselCard
               key={skill._id}
@@ -125,19 +121,19 @@ export function HomePage({ data }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <div className="w-full space-y-6">
-          <div className="flex flex-col gap-8 xl:hidden">
-            <BannerBase imgSrc={bannerSrc} text={bannerText} />
-          </div>
-          <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
-          <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
-          <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
-            <ContactForm onSubmit={() => {}} className="xl:max-w-[55%]" />
-            <BannerBase
-              className="hidden xl:flex xl:w-1/2"
-              imgSrc={bannerSrc}
-              text={bannerText}
-            />
+        <div className="relative w-full space-y-6 px-6 py-10 border border-line rounded-2xl overflow-hidden">
+          <img
+            src="/textured-sphere-pattern.svg"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute opacity-60 m-0 left-2/3 top-[-180px] w-[120%] max-w-none -translate-x-1/2 xl:left-auto xl:right-[-195px] xl:translate-x-0"
+          />
+          <div className="relative">
+            <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
+            <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
+            <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
+              <ContactForm onSubmit={() => {}} className="xl:max-w-[55%]" />
+            </div>
           </div>
         </div>
       </ContentSection>

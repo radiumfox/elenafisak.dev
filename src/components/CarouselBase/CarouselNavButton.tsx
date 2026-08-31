@@ -12,7 +12,7 @@ export function CarouselNavButton({ onClick, label, direction }: CarouselNavButt
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-white transition-opacity hover:opacity-80 cursor-pointer"
+      className="flex h-10 w-10 items-center justify-center rounded-full bg-subtle text-white transition-opacity hover:opacity-80 cursor-pointer"
     >
       <ChevronIcon
         direction={direction === 'prev' ? 'left' : 'right'}

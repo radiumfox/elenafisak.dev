@@ -1,11 +1,12 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import type { Swiper as SwiperClass } from 'swiper/types';
 import { CarouselNavButton } from './CarouselNavButton';
+import { CarouselPagination } from './CarouselPagination';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
@@ -24,7 +25,7 @@ export function CarouselBase({
   autoplayDelay = 3000,
   children,
 }: CarouselBaseProps) {
-  const swiperRef = useRef<SwiperClass | null>(null);
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const slides = Array.isArray(children) ? children : [children];
 
   return (
@@ -46,26 +47,26 @@ export function CarouselBase({
             ? { delay: autoplayDelay, disableOnInteraction: false, pauseOnMouseEnter: true }
             : undefined
         }
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
+        onSwiper={setSwiper}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>{slide}</SwiperSlide>
         ))}
       </Swiper>
 
+      <CarouselPagination swiper={swiper} count={slides.length} className="xs:hidden" />
+
       {navigation && (
-        <div className="mt-4 flex items-center justify-center gap-2 w-full">
+        <div className="mt-4 hidden xs:flex items-center justify-center gap-2 w-full">
           <CarouselNavButton
             label="Previous slides"
             direction="prev"
-            onClick={() => swiperRef.current?.slidePrev()}
+            onClick={() => swiper?.slidePrev()}
           />
           <CarouselNavButton
             label="Next slides"
             direction="next"
-            onClick={() => swiperRef.current?.slideNext()}
+            onClick={() => swiper?.slideNext()}
           />
         </div>
       )}

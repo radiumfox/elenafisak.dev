@@ -60,7 +60,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         </div>
         {downloadCvHref && (
           <div className="lg:hidden pt-2">
-            <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="secondary" icon={DownloadIcon} />
+            <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" icon={DownloadIcon} />
           </div>
         )}
       </ContentSection>
@@ -112,6 +112,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
 
       <ContentSection id="works">
         <div className="space-y-10">
+          <span className="block h-1 w-12 rounded-full bg-accent" />
           <h2 className="text-heading font-bold tracking-tight">
             I&#39;m currently working on
           </h2>

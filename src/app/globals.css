@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --subtle: #f6f6f6;
-  --line: #e2e2e2;
-  --muted: #525252;
-  --faint: #707070;
+  --background: #0d0a0c;
+  --foreground: #eaeae8;
+  --subtle: #171316;
+  --line: #28282b;
+  --muted: #a8a8a5;
+  --faint: #80807e;
   --accent: #2ee048;
 }
 
@@ -37,18 +37,6 @@
   --text-eyebrow--line-height: 1.4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0d0a0c;
-    --foreground: #eaeae8;
-    --subtle: #171316;
-    --line: #28282b;
-    --muted: #a8a8a5;
-    --faint: #80807e;
-    --accent: #2ee048;
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -63,6 +51,29 @@ body {
   background: var(--background);
   color: var(--foreground);
   line-height: 1.6;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
 }
 
 .aurora-page {
@@ -87,7 +98,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(70px);
-  opacity: 0.35;
+  opacity: 0.5;
 }
 
 .aurora-blob-1 {
@@ -130,12 +141,6 @@ body {
 @keyframes aurora-drift-3 {
   from { transform: translate(0, 0) scale(1); }
   to { transform: translate(10%, -14%) scale(1.2); }
-}
-
-@media (prefers-color-scheme: dark) {
-  .aurora-blob {
-    opacity: 0.5;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

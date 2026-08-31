@@ -13,6 +13,7 @@ import { DownloadIcon } from '@/lib/icons/DownloadIcon';
 import { getSocialLink } from '@/lib/social';
 import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
+import Image from 'next/image';
 
 export function HomePage({ data, downloadCvHref }: HomePageProps) {
   const { skills, experience, projects, settings } = data;
@@ -40,18 +41,26 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
   );
 
   return (
-    <main className="mt-[140px] w-full min-w-0 px-2 xs:px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
+    <main className="mt-35 w-full min-w-0 px-2 xs:px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-20 lg:pb-60">
       <ContentSection id="intro">
+        <Image
+          src="/wave-pattern.svg"
+          alt=""
+          width="500"
+          height="500"
+          aria-hidden="true"
+          className="pointer-events-none absolute opacity-40 m-0 -top-20 lg:top-0 xl:-top-12.5 left-[calc(50%-120px)] lg:left-[calc(50%+100px)] w-200 xl:w-375 max-w-none"
+        />
         <p className="text-eyebrow text-muted">{settings?.greeting}</p>
         <h1 className="text-heading font-bold">{settings?.headline}</h1>
-        <div className="space-y-4 text-muted max-w-[800px]">
+        <div className="space-y-4 text-muted max-w-200">
           {(settings?.introParagraphs ?? []).map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
         {downloadCvHref && (
           <div className="lg:hidden pt-2">
-            <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="secondary" icon={DownloadIcon} />
+            <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" icon={DownloadIcon} />
           </div>
         )}
       </ContentSection>
@@ -103,6 +112,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
 
       <ContentSection id="works">
         <div className="space-y-10">
+          <span className="block h-1 w-12 rounded-full bg-accent" />
           <h2 className="text-heading font-bold tracking-tight">
             I&#39;m currently working on
           </h2>
@@ -121,12 +131,14 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <div className="relative w-full space-y-6 px-6 py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
-          <img
+        <div className="relative w-full space-y-6 md:px-6 md:py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
+          <Image
             src="/textured-sphere-pattern.svg"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute opacity-60 m-0 left-2/3 top-[-180px] w-[120%] max-w-none -translate-x-1/2 xs:block hidden xl:left-auto xl:right-[-195px] xl:translate-x-0"
+            width="500"
+            height="500"
+            className="pointer-events-none absolute opacity-60 m-0 w-250 md:w-300 xl:w-350 max-w-none xs:block hidden -top-75 -left-50 md:-top-75 md:-left-25  xl:-top-90 xl:-left-25 "
           />
           <div className="relative space-y-4">
             <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>

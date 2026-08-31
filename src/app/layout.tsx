@@ -24,7 +24,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html className={jetbrainsMono.variable}>
-      <body>
+      <body className=" overflow-y-auto overflow-x-hidden">
         <div className="aurora-page" aria-hidden="true">
           <span className="aurora-blob aurora-blob-1" />
           <span className="aurora-blob aurora-blob-2" />

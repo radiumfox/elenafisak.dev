@@ -40,7 +40,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
   );
 
   return (
-    <main className="mt-[140px] w-full min-w-0 px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
+    <main className="mt-[140px] w-full min-w-0 px-2 xs:px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-[240px]">
       <ContentSection id="intro">
         <p className="text-eyebrow text-muted">{settings?.greeting}</p>
         <h1 className="text-heading font-bold">{settings?.headline}</h1>
@@ -121,14 +121,14 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <div className="relative w-full space-y-6 px-6 py-10 border border-line rounded-2xl overflow-hidden">
+        <div className="relative w-full space-y-6 px-6 py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
           <img
             src="/textured-sphere-pattern.svg"
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute opacity-60 m-0 left-2/3 top-[-180px] w-[120%] max-w-none -translate-x-1/2 xl:left-auto xl:right-[-195px] xl:translate-x-0"
+            className="pointer-events-none absolute opacity-60 m-0 left-2/3 top-[-180px] w-[120%] max-w-none -translate-x-1/2 xs:block hidden xl:left-auto xl:right-[-195px] xl:translate-x-0"
           />
-          <div className="relative">
+          <div className="relative space-y-4">
             <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
             <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">

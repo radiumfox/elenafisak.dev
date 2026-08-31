@@ -23,6 +23,7 @@
 }
 
 @theme {
+  --breakpoint-xs: 500px;
   --text-display: 3rem;
   --text-display--line-height: 1.1;
   --text-display--letter-spacing: -0.02em;

@@ -12,10 +12,10 @@ export function NavLink({ id, children, active, onClick }: NavLinkProps) {
     onClick={onClick}
     href={`#${id}`}
     aria-current={active ? 'true' : undefined}
-    className={`block rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
+    className={`block rounded-lg px-3 py-2.5 text-lg font-medium transition-colors ${
       active
         ? 'text-accent'
-        : 'text-muted hover:bg-subtle hover:text-foreground'
+        : 'text-muted hover:text-foreground'
     }`}
   >
     {children}

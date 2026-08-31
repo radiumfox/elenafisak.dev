@@ -34,8 +34,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <div className="flex flex-col">
           <HeaderBase logo={<Logo/>} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={headerLinks} />
 
-          <div className="px-6 lg:min-h-0 lg:flex-1">
-            <div className="mx-auto max-w-[1440px] lg:flex lg:min-h-0 lg:flex-row lg:py-0 px-6 lg:min-h-0 lg:flex-1">
+          <div className="mx-auto w-full max-w-[1440px] px-6 lg:min-h-0 lg:flex-1">
+            <div className="lg:flex lg:min-h-0 lg:flex-row lg:py-0 lg:min-h-0 lg:flex-1">
               <SidebarBase links={NAV_LINKS} avatarSrc={avatarSrc} />
               <div className="lg:min-h-0 lg:h-[100vh-64px] lg:flex-1 lg:overflow-y-auto flex flex-col justify-between">
                 <div>

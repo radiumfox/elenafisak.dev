@@ -18,7 +18,7 @@ export function SidebarBase({ links, downloadCvHref }: SidebarBaseProps) {
 
   return (
     <aside className="hidden sticky top-16 py-5 h-[calc(100vh-64px)] w-71 shrink-0 flex-col justify-between border-r border-line pr-6 lg:flex">
-      <nav className="flex flex-col overflow-y-scroll pb-4 gap-y-8 pt-14">
+      <nav className="flex flex-col overflow-y-auto pb-4 gap-y-20 pt-14">
         <ul className="space-y-0.5">
           {links.map((link) => (
             <li key={link.id}>
@@ -30,7 +30,7 @@ export function SidebarBase({ links, downloadCvHref }: SidebarBaseProps) {
         </ul>
 
         <div className="space-y-3">
-          <ButtonBase className="w-[200px]" href={downloadCvHref} target="_blank" text="Download my CV" mode="secondary" icon={DownloadIcon} />
+          <ButtonBase className="w-50" href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" icon={DownloadIcon} />
         </div>
       </nav>
     </aside>

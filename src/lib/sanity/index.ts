@@ -1,4 +1,5 @@
 export { skillsQuery, experienceQuery, projectsQuery, settingsQuery } from './queries';
+export { PortableText } from './portableText';
 export type {
   LabelColor,
   SkillLabel,
@@ -9,4 +10,7 @@ export type {
   SocialLink,
   SiteSettings,
   SiteData,
+  PortableTextBlock,
+  PortableTextSpan,
+  PortableTextMarkDef,
 } from './types';

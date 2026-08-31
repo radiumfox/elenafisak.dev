@@ -7,7 +7,7 @@
   --line: #28282b;
   --muted: #a8a8a5;
   --faint: #80807e;
-  --accent: #8fb33f;
+  --accent: #7db84e;
 }
 
 @theme inline {
@@ -106,7 +106,7 @@ body {
   top: -25%;
   width: 60%;
   height: 60%;
-  background: radial-gradient(circle, rgba(143, 179, 63, 0.6), transparent 65%);
+  background: radial-gradient(circle, rgba(125, 184, 78, 0.6), transparent 65%);
   animation: aurora-drift-1 18s ease-in-out infinite alternate;
 }
 

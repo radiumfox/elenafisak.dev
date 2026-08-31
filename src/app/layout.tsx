@@ -8,6 +8,7 @@ import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { NAV_LINKS } from '@/lib/router';
 import { loadSiteData } from '@/lib/sanity/loadData';
 import { fileUrlFor } from '@/lib/sanity/image';
+import { PortableText } from '@/lib/sanity';
 import { toHeaderLinks, toSocialLinks } from '@/lib/social';
 import { Logo } from '@/lib/icons/Logo';
 
@@ -59,6 +60,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                     })}
                   </div>
                 </FooterBase>
+                {settings?.otherCredits && (
+                  <div className="text-xs text-faint lg:mx-12 pb-5">
+                    <PortableText value={settings.otherCredits} />
+                  </div>
+                )}
               </div>
             </div>
           </div>

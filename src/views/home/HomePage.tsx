@@ -144,7 +144,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
             <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
             <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
-              <ContactForm className="xl:max-w-[55%]" />
+              <ContactForm className="xl:max-w-[55%]" contactEmail={settings?.email} />
             </div>
           </div>
         </div>

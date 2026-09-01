@@ -9,6 +9,7 @@ export interface ContactFormFields {
 
 export interface ContactFormProps {
   className?: string;
+  contactEmail?: string;
 }
 
 export type ContactFieldName = keyof ContactFormFields;

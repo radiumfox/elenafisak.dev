@@ -3,14 +3,17 @@ import { SubmitEvent, useState } from 'react';
 import { FieldBase } from '@/components/FieldBase';
 import { ButtonBase } from '@/components/ButtonBase';
 import { SpinnerIcon } from '@/lib/icons/SpinnerIcon';
+import { CheckIcon } from '@/lib/icons/CheckIcon';
+import { AlertIcon } from '@/lib/icons/AlertIcon';
 import { useContactFormValidation } from './useContactFormValidation';
 import type { ContactFormProps } from './types';
 import { sendEmail } from '@/lib/api/sendEmail';
 
-export function ContactForm({ className }: ContactFormProps) {
+export function ContactForm({ className, contactEmail }: ContactFormProps) {
   const { values, errors, hasErrors, handleChange, handleBlur, validate, clearForm } = useContactFormValidation();
   const [loading, setLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isFailed, setIsFailed] = useState(false);
 
   const handleContactFormSubmit = async(data: FormData) => {
     try {
@@ -19,10 +22,11 @@ export function ContactForm({ className }: ContactFormProps) {
 
       if(result && result.success) {
         setIsSubmitted(true);
+        return;
       }
-      console.log(result);
+      setIsFailed(true);
     } catch (error) {
-      console.error(error);
+      setIsFailed(true);
     } finally {
       setLoading(false);
     }
@@ -39,17 +43,57 @@ export function ContactForm({ className }: ContactFormProps) {
     await handleContactFormSubmit(formData);
   };
 
-  const returnToForm = () => {
+  const resetForm = () => {
     clearForm();
     setIsSubmitted(false);
+    setIsFailed(false);
+  };
+
+  const tryAgain = () => {
+    setIsSubmitted(false);
+    setIsFailed(false);
   };
 
   if(isSubmitted) {
     return (
-      <>
-        <p>You successfully send the message!</p>
-        <button onClick={returnToForm}>Send more messages</button>
-      </>
+      <div className="space-y-4 pt-10">
+        <div className="flex items-center gap-2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent">
+            <CheckIcon className="h-5 w-5" />
+          </span>
+          <p className="text-xl font-semibold text-foreground">Your message was sent!</p>
+        </div>
+        <p className="text-muted">
+          Thanks for reaching out.<br/> I&apos;ll get back to you as soon as possible.
+        </p>
+        <ButtonBase type="button" mode="primary" onClick={resetForm} className="px-5 py-2.5 cursor-pointer">
+          Send another message
+        </ButtonBase>
+      </div>
+    );
+  }
+
+  if(isFailed) {
+    return (
+      <div className="space-y-4 pt-10">
+        <div className="flex items-center gap-2">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-500/15 text-red-500">
+            <AlertIcon className="h-5 w-5" />
+          </span>
+          <p className="text-xl font-semibold text-foreground">Something went wrong</p>
+        </div>
+        <p className="text-muted">
+          Try again or write me an email directly at{' '}
+          {contactEmail && (
+            <a className="font-medium text-accent underline" href={`mailto:${contactEmail}`}>
+              {contactEmail}
+            </a>
+          )}.
+        </p>
+        <ButtonBase type="button" mode="primary" onClick={tryAgain} className="px-5 py-2.5 cursor-pointer">
+          Try again
+        </ButtonBase>
+      </div>
     );
   }
 

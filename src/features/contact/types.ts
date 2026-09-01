@@ -4,12 +4,10 @@ export interface ContactFormFields {
   name: string;
   email: string;
   subject: string;
-  help: string;
+  text: string;
 }
 
 export interface ContactFormProps {
-  onSubmit: (fields: ContactFormFields) => void;
-  loading?: boolean;
   className?: string;
 }
 
@@ -26,4 +24,5 @@ export interface UseContactFormValidation {
   ) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   handleBlur: (field: ContactFieldName) => () => void;
   validate: () => boolean;
+  clearForm: () => void;
 }

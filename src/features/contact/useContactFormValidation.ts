@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { ChangeEvent } from 'react';
 import type { ContactFieldName, ContactFormErrors, ContactFormFields, UseContactFormValidation } from './types';
 
-const REQUIRED_FIELDS: ContactFieldName[] = ['name', 'email', 'help'];
+const REQUIRED_FIELDS: ContactFieldName[] = ['name', 'email', 'text'];
 
 const EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
@@ -10,7 +10,7 @@ const EMPTY_VALUES: ContactFormFields = {
   name: '',
   email: '',
   subject: '',
-  help: '',
+  text: '',
 };
 
 export function useContactFormValidation(initialValues: ContactFormFields = EMPTY_VALUES): UseContactFormValidation {
@@ -40,15 +40,26 @@ export function useContactFormValidation(initialValues: ContactFormFields = EMPT
   };
 
   const validate = () => {
-    const nextErrors: ContactFormErrors = {};
+    const nextErrors: ContactFormErrors = {
+      name: undefined,
+      email: undefined,
+      subject: undefined,
+      text: undefined,
+    };
+
     for (const field of REQUIRED_FIELDS) {
       nextErrors[field] = validateField(field);
     }
+
     setErrors(nextErrors);
     return REQUIRED_FIELDS.every((field) => !nextErrors[field]);
   };
 
   const hasErrors = Object.values(errors).some(Boolean);
 
-  return { values, errors, hasErrors, handleChange, handleBlur, validate };
+  const clearForm = () => {
+    setValues(initialValues);
+  };
+
+  return { values, errors, hasErrors, handleChange, handleBlur, validate, clearForm };
 }

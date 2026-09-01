@@ -7,7 +7,7 @@ import type { FeatureCardItem } from '@/components/FeatureCards';
 import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
-import { ContactForm } from '@/components/ContactForm';
+import { ContactForm } from '@/features/contact';
 import { ButtonBase } from '@/components/ButtonBase';
 import { DownloadIcon } from '@/lib/icons/DownloadIcon';
 import { getSocialLink } from '@/lib/social';
@@ -131,7 +131,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <div className="relative w-full space-y-6 md:px-6 md:py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
+        <div className="relative w-full h-161.25 xs:h-182.5 space-y-6 xs:px-6 xs:py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
           <Image
             src="/textured-sphere-pattern.svg"
             alt=""
@@ -144,7 +144,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
             <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
             <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
-              <ContactForm onSubmit={() => {}} className="xl:max-w-[55%]" />
+              <ContactForm className="xl:max-w-[55%]" contactEmail={settings?.email} />
             </div>
           </div>
         </div>

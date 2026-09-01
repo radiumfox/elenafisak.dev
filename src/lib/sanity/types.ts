@@ -49,6 +49,7 @@ export interface SiteSettings {
   introParagraphs: string[];
   socials: SocialLink[];
   contactsBannerText: string;
+  email?: string;
   contactsBannerImage?: {
     _type: 'image';
     asset: { _ref: string; _type: 'reference' };

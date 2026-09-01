@@ -1,5 +1,6 @@
 ﻿import './globals.css';
 import type { ReactNode } from 'react';
+import type { Metadata } from 'next';
 import { jetbrainsMono } from './fonts';
 import { HeaderBase } from '@/components/HeaderBase';
 import { SidebarBase } from '@/components/SidebarBase';
@@ -13,6 +14,18 @@ import { toHeaderLinks, toSocialLinks } from '@/lib/social';
 import { Logo } from '@/lib/icons/Logo';
 
 const MOBILE_HEADER_LINKS = NAV_LINKS.map((link) => ({ name: link.label, href: `#${link.id}` }));
+
+export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon/favicon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon/favicon-16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    shortcut: '/favicon/favicon.ico',
+    apple: '/favicon/apple-touch-icon.png',
+  },
+};
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const { settings } = await loadSiteData();

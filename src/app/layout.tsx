@@ -38,12 +38,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html className={jetbrainsMono.variable}>
-      <body className=" overflow-y-auto overflow-x-hidden">
-        <div className="aurora-page" aria-hidden="true">
-          <span className="aurora-blob aurora-blob-1" />
-          <span className="aurora-blob aurora-blob-2" />
-          <span className="aurora-blob aurora-blob-3" />
-        </div>
+      <body className="overflow-y-auto">
         <div className="flex flex-col">
           <HeaderBase logo={<Logo />} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={headerLinks} />
 

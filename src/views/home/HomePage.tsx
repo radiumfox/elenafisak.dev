@@ -62,6 +62,8 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
               <ButtonBase href="#contacts" text="Get in touch" mode="secondary" className="w-full" size="lg" />
             </div>
           </div>
+          <div className="aurora-blob aurora-blob-1 z-[-1]"></div>
+          <div className="aurora-blob aurora-blob-3 z-[-1]"></div>
         </div>
       </ContentSection>
 
@@ -133,9 +135,12 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
 
       <ContentSection id="contacts">
         <span className="block h-1 w-12 rounded-full bg-accent" />
-        <h2 className="text-heading font-bold tracking-tight">Get in touch</h2>
-        <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">
+        <div className="relative w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">
+          <div className="aurora-blob aurora-blob-1 z-[-1]"></div>
+          <div className="aurora-blob aurora-blob-2 z-[-1]"></div>
+          <div className="aurora-blob aurora-blob-3 z-[-1]"></div>
           <div className="space-y-8 mb-0">
+            <h2 className="text-heading font-bold tracking-tight">Get in touch</h2>
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
             <div>
               <h3 className="font-semibold text-2xl mb-5">Socials:</h3>
@@ -148,7 +153,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
                         href={link.href}
                         target={link.target}
                         rel="noreferrer"
-                        className="flex items-center gap-3 text-muted transition-colors hover:text-foreground"
+                        className="flex items-center gap-3 text-muted transition-colors hover:text-foreground w-fit"
                       >
                         <Icon className="h-5 w-5" />
                         <span className="text-lg font-medium">{link.label}</span>
@@ -159,9 +164,9 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
               </ul>
             </div>
           </div>
-          <div className="lg:w-[55%] lg:mt-0">
-            <h3 className="font-semibold text-2xl mb-5">Drop a message</h3>
-            <ContactForm className="" contactEmail={settings?.email} />
+          <div className="lg:w-[55%] lg:mt-0 space-y-8">
+            <h2 className="text-heading font-bold tracking-tight">Drop a message</h2>
+            <ContactForm contactEmail={settings?.email} />
           </div>
         </div>
       </ContentSection>

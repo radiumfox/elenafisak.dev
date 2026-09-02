@@ -106,7 +106,7 @@ body {
   top: -25%;
   width: 60%;
   height: 60%;
-  background: radial-gradient(circle, rgba(125, 184, 78, 0.6), transparent 65%);
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.2), transparent 65%);
   animation: aurora-drift-1 18s ease-in-out infinite alternate;
 }
 
@@ -115,7 +115,7 @@ body {
   top: -10%;
   width: 55%;
   height: 55%;
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.5), transparent 65%);
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.3), transparent 65%);
   animation: aurora-drift-2 22s ease-in-out infinite alternate;
 }
 
@@ -124,8 +124,17 @@ body {
   left: 40%;
   width: 50%;
   height: 50%;
-  background: radial-gradient(circle, rgba(192, 132, 252, 0.4), transparent 65%);
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.3), transparent 65%);
   animation: aurora-drift-3 26s ease-in-out infinite alternate;
+}
+
+.aurora-blob-4 {
+  left: -15%;
+  top: -25%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgb(65 234 111 / 0.59), transparent 65%);
+  animation: aurora-drift-1 18s ease-in-out infinite alternate;
 }
 
 @keyframes aurora-drift-1 {
@@ -219,4 +228,3 @@ body {
     animation: none;
   }
 }
-

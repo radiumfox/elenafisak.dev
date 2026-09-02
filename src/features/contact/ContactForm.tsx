@@ -99,6 +99,7 @@ export function ContactForm({ className, contactEmail }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit} noValidate className={`w-full space-y-6 ${className ?? ''}`}>
+
       <FieldBase
         id="name"
         label="Full Name"

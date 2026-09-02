@@ -62,8 +62,10 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
               <ButtonBase href="#contacts" text="Get in touch" mode="secondary" className="w-full" size="lg" />
             </div>
           </div>
-          <div className="aurora-blob aurora-blob-1 z-[-1]"></div>
-          <div className="aurora-blob aurora-blob-3 z-[-1]"></div>
+          <div className="aurora-page">
+            <div className="aurora-blob aurora-blob-1"></div>
+            <div className="aurora-blob aurora-blob-3"></div>
+          </div>
         </div>
       </ContentSection>
 
@@ -135,10 +137,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
 
       <ContentSection id="contacts">
         <span className="block h-1 w-12 rounded-full bg-accent" />
-        <div className="relative w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">
-          <div className="aurora-blob aurora-blob-1 z-[-1]"></div>
-          <div className="aurora-blob aurora-blob-2 z-[-1]"></div>
-          <div className="aurora-blob aurora-blob-3 z-[-1]"></div>
+        <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">
           <div className="space-y-8 mb-0">
             <h2 className="text-heading font-bold tracking-tight">Get in touch</h2>
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>

@@ -4,7 +4,7 @@ const MODE_CLASSES: Record<ButtonBaseMode, string> = {
   primary:
     'bg-accent text-background hover:opacity-90',
   secondary:
-    'border border-faint/50 text-muted hover:bg-subtle hover:text-foreground',
+    'border border-faint/50 text-muted hover:bg-subtle/50 hover:text-foreground',
 };
 
 const SIZE_CLASSES: Record<ButtonBaseSize, string> = {

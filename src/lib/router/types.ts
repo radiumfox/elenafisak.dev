@@ -7,6 +7,7 @@ export interface SectionLink {
 
 export interface SocialLink {
   name: string;
+  label: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   href: string;
   target?: string;

@@ -27,7 +27,7 @@ export function ProjectInfoCard({
           {videoNode}
         </div>
 
-        <p className="max-w-[450px] text-muted">{description}</p>
+        <p className="max-w-[600px] w-full text-muted">{description}</p>
 
         <NumberedList items={features} />
 

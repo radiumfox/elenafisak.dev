@@ -38,10 +38,10 @@ export const SKILL_ICONS: Record<string, IconComponent> = {
 };
 
 export const SOCIAL_ICONS: Record<SocialIconName, IconComponent> = {
-  GitHub: GitHubIcon,
-  GitLab: GitLabIcon,
-  LinkedIn: LinkedInIcon,
-  Telegram: TelegramIcon,
+  github: GitHubIcon,
+  gitlab: GitLabIcon,
+  linkedin: LinkedInIcon,
+  telegram: TelegramIcon,
 };
 
 export function getExperienceIcon(name: string): IconComponent {
@@ -55,5 +55,6 @@ export function getSkillIcon(title: string): IconComponent {
 export function getSocialIcon(
   name: string,
 ): IconComponent | undefined {
-  return SOCIAL_ICONS[name as SocialIconName];
+  const normalized = name.toLowerCase();
+  return SOCIAL_ICONS[normalized as SocialIconName];
 }

@@ -10,10 +10,10 @@ import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 import { ContactForm } from '@/features/contact';
 import { ButtonBase } from '@/components/ButtonBase';
 import { DownloadIcon } from '@/lib/icons/DownloadIcon';
-import { getSocialLink } from '@/lib/social';
+import { getSocialLink, toSocialLinks } from '@/lib/social';
 import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
-import Image from 'next/image';
+import { ParticleNetwork } from '@/components/ParticleNetwork';
 
 export function HomePage({ data, downloadCvHref }: HomePageProps) {
   const { skills, experience, projects, settings } = data;
@@ -41,35 +41,35 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
   );
 
   return (
-    <main className="mt-35 w-full min-w-0 px-2 xs:px-4 sm:px-6 md:px-6 lg:px-12 lg:pr-6 space-y-16 pb-20 lg:pb-60">
-      <ContentSection id="intro">
-        <Image
-          src="/wave-pattern.svg"
-          alt=""
-          width="500"
-          height="500"
-          aria-hidden="true"
-          className="pointer-events-none absolute opacity-40 m-0 -top-20 lg:top-0 xl:-top-12.5 left-[calc(50%-120px)] lg:left-[calc(50%+100px)] w-200 xl:w-375 max-w-none"
-        />
-        <p className="text-eyebrow text-muted">{settings?.greeting}</p>
-        <h1 className="text-heading font-bold">{settings?.headline}</h1>
-        <div className="space-y-4 text-muted max-w-200">
-          {(settings?.introParagraphs ?? []).map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-        {downloadCvHref && (
-          <div className="lg:hidden pt-2">
-            <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" icon={DownloadIcon} />
+    <main className="mt-35 w-full min-w-0 space-y-30 pb-20 lg:pb-60">
+      <ParticleNetwork className="absolute top-0 left-0 w-full h-[60%]" />
+      <ContentSection id="intro" className="relative scroll-mt-50">
+        <div className="relative flex w-full gap-x-25">
+          <div className="max-w-175 space-y-6">
+            <p className="text-eyebrow text-muted">{settings?.greeting}</p>
+            <h1 className="font-bold text-[60px] xs:text-[80px] leading-none bg-clip-text text-heading" style={{ fontFamily: 'var(--font-roboto-condensed)' }}>{settings?.headline}</h1>
+            <div className="space-y-4 text-muted max-w-200">
+              {(settings?.introParagraphs ?? []).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+            {downloadCvHref && (
+              <div className="space-y-3 md:w-[50%]">
+                <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" size="lg" icon={DownloadIcon} />
+              </div>
+            )}
+            <div className="md:w-[50%]">
+              <ButtonBase href="#contacts" text="Get in touch" mode="secondary" className="w-full" size="lg" />
+            </div>
           </div>
-        )}
+        </div>
       </ContentSection>
 
       <ContentSection id="experience">
         <div className="space-y-12">
           <div className="space-y-3">
             <span className="block h-1 w-12 rounded-full bg-accent" />
-            <h2 className="text-heading font-bold tracking-tight">
+            <h2 className="text-title xs:text-heading font-bold tracking-tight">
               More details about how I can help you
             </h2>
             <p className="text-muted">
@@ -77,6 +77,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
             </p>
           </div>
           <FeatureCards
+            className=""
             items={featureItems}
             action={featureAction}
           />
@@ -86,7 +87,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       <ContentSection id="skills">
         <div className="space-y-3">
           <span className="block h-1 w-12 rounded-full bg-accent" />
-          <h2 className="text-heading font-bold tracking-tight">Skills</h2>
+          <h2 className="text-title xs:text-heading font-bold tracking-tight">Skills</h2>
           <p className="text-muted">
             Technologies I know
           </p>
@@ -111,9 +112,9 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="works">
+        <span className="block h-1 w-12 rounded-full bg-accent" />
         <div className="space-y-10">
-          <span className="block h-1 w-12 rounded-full bg-accent" />
-          <h2 className="text-heading font-bold tracking-tight">
+          <h2 className="text-title xs:text-heading font-bold tracking-tight">
             I&#39;m currently working on
           </h2>
 
@@ -131,21 +132,36 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <div className="relative w-full h-161.25 xs:h-182.5 space-y-6 xs:px-6 xs:py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
-          <Image
-            src="/textured-sphere-pattern.svg"
-            alt=""
-            aria-hidden="true"
-            width="500"
-            height="500"
-            className="pointer-events-none absolute opacity-60 m-0 w-250 md:w-300 xl:w-350 max-w-none xs:block hidden -top-75 -left-50 md:-top-75 md:-left-25  xl:-top-90 xl:-left-25 "
-          />
-          <div className="relative space-y-4">
-            <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
+        <span className="block h-1 w-12 rounded-full bg-accent" />
+        <h2 className="text-heading font-bold tracking-tight">Get in touch</h2>
+        <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">
+          <div className="space-y-8 mb-0">
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
-            <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
-              <ContactForm className="xl:max-w-[55%]" contactEmail={settings?.email} />
+            <div>
+              <h3 className="font-semibold text-2xl mb-5">Socials:</h3>
+              <ul className="flex flex-col gap-3">
+                {toSocialLinks(settings?.socials).map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        target={link.target}
+                        rel="noreferrer"
+                        className="flex items-center gap-3 text-muted transition-colors hover:text-foreground"
+                      >
+                        <Icon className="h-5 w-5" />
+                        <span className="text-lg font-medium">{link.label}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
+          </div>
+          <div className="lg:w-[55%] lg:mt-0">
+            <h3 className="font-semibold text-2xl mb-5">Drop a message</h3>
+            <ContactForm className="" contactEmail={settings?.email} />
           </div>
         </div>
       </ContentSection>

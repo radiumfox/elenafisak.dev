@@ -31,6 +31,7 @@ export function SidebarBase({ links, downloadCvHref }: SidebarBaseProps) {
 
         <div className="space-y-3">
           <ButtonBase className="w-50" href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" icon={DownloadIcon} />
+          <ButtonBase className="w-50 border-accent/60 text-accent hover:bg-accent/10 hover:text-accent" href="#contacts" text="Get in touch" mode="secondary" />
         </div>
       </nav>
     </aside>

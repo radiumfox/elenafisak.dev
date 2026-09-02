@@ -15,7 +15,7 @@ export function useActiveSection(ids: string[]) {
 
     if (sections.length === 0) return;
 
-    const ACTIVE_OFFSET = 96;
+    const ACTIVE_OFFSET = 130;
 
     const updateActiveId = () => {
       let current = sections[0].id;

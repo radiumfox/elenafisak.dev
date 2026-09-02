@@ -4,16 +4,20 @@ import Link from 'next/link';
 interface HeaderBaseLinkProps {
   href?: string;
   children: ReactNode;
-  target?: HTMLAttributeAnchorTarget
+  target?: HTMLAttributeAnchorTarget;
+  active?: boolean;
 }
 
-export function HeaderBaseLink({ href, children, target }: HeaderBaseLinkProps) {
+export function HeaderBaseLink({ href, children, target, active }: HeaderBaseLinkProps) {
   if (href) {
     return (
       <Link
         href={href}
         target={target}
-        className="rounded-full px-3 py-1.5 text-base font-medium text-muted transition-colors hover:text-foreground"
+        aria-current={active ? 'true' : undefined}
+        className={`rounded-full px-3 py-1.5 text-base font-medium transition-colors ${
+          active ? 'text-accent' : 'text-muted hover:text-foreground'
+        }`}
       >
         {children}
       </Link>

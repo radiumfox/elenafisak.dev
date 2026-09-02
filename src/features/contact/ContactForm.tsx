@@ -145,14 +145,17 @@ export function ContactForm({ className, contactEmail }: ContactFormProps) {
         error={errors.text}
       />
 
-      <ButtonBase
-        type="submit"
-        disabled={hasErrors || loading}
-        className="px-6 py-3 cursor-pointer w-full"
-      >
-        {loading && <SpinnerIcon className="h-4 w-4 animate-spin"/>}
-        {loading ? 'Sending...' : 'Send your message'}
-      </ButtonBase>
+      <div className="w-full flex justify-end">
+        <ButtonBase
+          type="submit"
+          disabled={hasErrors || loading}
+          className="px-6 py-3 cursor-pointer w-full"
+          size="lg"
+        >
+          {loading && <SpinnerIcon className="h-4 w-4 animate-spin"/>}
+          {loading ? 'Sending...' : 'Send your message'}
+        </ButtonBase>
+      </div>
     </form>
   );
 }

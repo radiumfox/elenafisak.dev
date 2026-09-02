@@ -37,8 +37,8 @@ export function CarouselBase({
         loop={true}
         breakpoints={{
           0: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1362: { slidesPerView: 3 },
+          768: { slidesPerView: 3 },
+          1362: { slidesPerView: 4 },
         }}
         spaceBetween={16}
         navigation={false}

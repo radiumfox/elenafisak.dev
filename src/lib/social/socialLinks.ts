@@ -15,18 +15,23 @@ export function getSocialLink(
 
 export function toSocialLinks(socials: SocialLinkType[] | undefined): SocialLink[] {
   const links: SocialLink[] = [];
+
   for (const social of socials ?? []) {
     const icon = getSocialIcon(social.name);
+
     if (!icon || !social.url) {
       continue;
     }
+
     links.push({
       name: social.name,
+      label: social.title ?? social.name,
       href: social.url,
       target: '_blank',
-      icon,
+      icon: icon ?? undefined,
     });
   }
+
   return links;
 }
 

@@ -10,7 +10,7 @@ import { ProjectInfoCard } from '@/components/ProjectInfoCard';
 import { ContactForm } from '@/features/contact';
 import { ButtonBase } from '@/components/ButtonBase';
 import { DownloadIcon } from '@/lib/icons/DownloadIcon';
-import { getSocialLink } from '@/lib/social';
+import { getSocialLink, toSocialLinks } from '@/lib/social';
 import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
 
@@ -40,24 +40,24 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
   );
 
   return (
-    <main className="mt-35 w-full min-w-0 px-2 xs:px-4 sm:px-6 md:px-6 lg:px-12 space-y-30 pb-20 lg:pb-60">
+    <main className="mt-35 w-full min-w-0 space-y-30 pb-20 lg:pb-60">
       <ContentSection id="intro" className="relative scroll-mt-50">
         <div className="relative flex w-full gap-x-[100px]">
-          <div className="max-w-[600px] space-y-3">
+          <div className="max-w-[700px] space-y-6">
             <p className="text-eyebrow text-muted">{settings?.greeting}</p>
-            <h1 className="font-bold text-[60px] leading-none bg-clip-text text-accent ">{settings?.headline}</h1>
+            <h1 className="font-bold text-[80px] leading-none bg-clip-text text-heading" style={{ fontFamily: 'var(--font-roboto-condensed)' }}>{settings?.headline}</h1>
             <div className="space-y-4 text-muted max-w-200">
               {(settings?.introParagraphs ?? []).map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
             {downloadCvHref && (
-              <div className="lg:hidden pt-2 space-y-3">
-                <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" icon={DownloadIcon} />
+              <div className="pt-10 space-y-3 w-[50%]">
+                <ButtonBase href={downloadCvHref} target="_blank" text="Download my CV" mode="primary" size="lg" icon={DownloadIcon} />
               </div>
             )}
-            <div className="lg:hidden pt-2 w-full">
-              <ButtonBase href="#contacts" text="Get in touch" mode="secondary" className="w-full" />
+            <div className="w-[50%]">
+              <ButtonBase href="#contacts" text="Get in touch" mode="secondary" className="w-full" size="lg" />
             </div>
           </div>
         </div>
@@ -75,6 +75,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
             </p>
           </div>
           <FeatureCards
+            className=""
             items={featureItems}
             action={featureAction}
           />
@@ -109,8 +110,8 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="works">
+        <span className="block h-1 w-12 rounded-full bg-accent" />
         <div className="space-y-10">
-          <span className="block h-1 w-12 rounded-full bg-accent" />
           <h2 className="text-heading font-bold tracking-tight">
             I&#39;m currently working on
           </h2>
@@ -129,13 +130,34 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="contacts">
-        <div className="relative w-full xs:h-182.5 space-y-6 xs:px-6 xs:py-10 border-0 xs:border border-line rounded-2xl overflow-hidden">
-          <div className="relative space-y-4">
-            <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
+        <span className="block h-1 w-12 rounded-full bg-accent" />
+        <h1 className="text-heading font-bold tracking-tight">Get in touch</h1>
+        <div className="w-full flex justify-between space-y-6 ">
+
+          <div className="space-y-8 mb-0">
             <p className="text-muted">Whether you have a project, an opportunity,<br/> or simply want to connect — drop me a message.</p>
-            <div className="flex flex-col gap-8 xl:flex-row xl:gap-6">
-              <ContactForm className="" contactEmail={settings?.email} />
-            </div>
+            <p className="font-bold text-xl">Socials:</p>
+            <ul className="flex flex-col gap-3">
+              {toSocialLinks(settings?.socials).map((link) => {
+                const Icon = link.icon;
+                return (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      target={link.target}
+                      rel="noreferrer"
+                      className="flex items-center gap-3 text-muted transition-colors hover:text-foreground"
+                    >
+                      <Icon className="h-5 w-5" />
+                      <span className="text-lg font-medium">{link.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="lg:w-[55%]">
+            <ContactForm className="" contactEmail={settings?.email} />
           </div>
         </div>
       </ContentSection>

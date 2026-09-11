@@ -48,7 +48,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
           <div className="max-w-175 space-y-6">
             <p className="text-eyebrow text-muted">{settings?.greeting}</p>
             <h1 className="font-bold text-[60px] xs:text-[80px] leading-none bg-clip-text text-heading" style={{ fontFamily: 'var(--font-roboto-condensed)' }}>{settings?.headline}</h1>
-            <div className="space-y-4 text-muted max-w-200">
+            <div className="space-y-4 text-xl text-muted max-w-200">
               {(settings?.introParagraphs ?? []).map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -128,8 +128,9 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
               title={project.title}
               description={project.description}
               features={project.steps ?? []}
-              href={project.githubUrl ?? '#'}
-              videoSrc={project.videoUrl}
+              href={project.githubUrl}
+              appHref={project.appUrl}
+              video={project.video}
             />
           ))}
         </div>

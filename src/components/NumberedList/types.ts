@@ -5,4 +5,5 @@ export interface NumberedListItem {
 
 export interface NumberedListProps {
   items: NumberedListItem[];
+  className?: string;
 }

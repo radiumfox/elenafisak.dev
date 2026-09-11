@@ -1,8 +1,8 @@
 import type { NumberedListProps } from './types';
 
-export function NumberedList({ items }: NumberedListProps) {
+export function NumberedList({ items, className = '' }: NumberedListProps) {
   return (
-    <ol className="space-y-4">
+    <ol className={`space-y-4 ${className}`}>
       {items.map((item, index) => (
         <li key={item.title} className="flex items-start gap-4">
           <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-background">

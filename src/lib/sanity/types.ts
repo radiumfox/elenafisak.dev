@@ -26,12 +26,19 @@ export interface ProjectStep {
   description: string;
 }
 
+export interface MuxVideo {
+  playbackId: string;
+  assetId?: string;
+  status?: string;
+}
+
 export interface Project {
   _id: string;
   _createdAt: string;
   title: string;
   description: string;
-  videoUrl?: string;
+  video?: MuxVideo;
+  appUrl?: string;
   githubUrl?: string;
   steps: ProjectStep[];
 }

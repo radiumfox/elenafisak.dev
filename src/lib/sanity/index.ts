@@ -1,4 +1,5 @@
 export { skillsQuery, experienceQuery, projectsQuery, settingsQuery } from './queries';
+export { MUX_PLAYER_BASE_URL } from './config';
 export { PortableText } from './portableText';
 export type {
   LabelColor,
@@ -6,6 +7,7 @@ export type {
   Skill,
   ExperienceEntry,
   ProjectStep,
+  MuxVideo,
   Project,
   SocialLink,
   SiteSettings,

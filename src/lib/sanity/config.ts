@@ -1,0 +1,1 @@
+export const MUX_PLAYER_BASE_URL = 'https://player.mux.com';

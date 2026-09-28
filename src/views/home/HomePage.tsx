@@ -101,7 +101,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
           {(skills ?? []).map((skill) => (
             <CarouselCard
               key={skill._id}
-              icon={getSkillIcon(skill.title)}
+              icon={getSkillIcon(skill.name)}
               title={skill.title}
               description={skill.description}
             >

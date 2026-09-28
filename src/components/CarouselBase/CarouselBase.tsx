@@ -33,7 +33,7 @@ export function CarouselBase({
       <Swiper
         modules={[Navigation, Autoplay]}
         slidesPerView={1}
-        initialSlide={1}
+        initialSlide={0}
         loop={true}
         breakpoints={{
           0: { slidesPerView: 1 },

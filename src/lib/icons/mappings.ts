@@ -8,6 +8,8 @@ import { CodeIcon } from './CodeIcon';
 import { CompassIcon } from './CompassIcon';
 import { GemIcon } from './GemIcon';
 import { ServerIcon } from './ServerIcon';
+import { LockIcon } from './LockIcon';
+import { WrenchIcon } from './WrenchIcon';
 import { FlaskIcon } from './FlaskIcon';
 import { CloudIcon } from './CloudIcon';
 import { GitHubIcon } from './GitHubIcon';
@@ -19,22 +21,26 @@ import type { SocialIconName } from '@/lib/social/types';
 export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 export const EXPERIENCE_ICONS: Record<string, IconComponent> = {
-  frontendEngineering: CodeIcon,
+  engineering: CodeIcon,
   ownership: GemIcon,
-  designSystems: PaletteIcon,
+  design: PaletteIcon,
   performance: GaugeIcon,
   architecture: NetworkIcon,
   api: PlugIcon,
-  platforms: LayersIcon,
+  fullstack: LayersIcon,
   leadership: CompassIcon,
 };
 
 export const SKILL_ICONS: Record<string, IconComponent> = {
-  Frontend: CodeIcon,
-  Backend: ServerIcon,
-  APIs: PlugIcon,
-  Testing: FlaskIcon,
-  Infrastructure: CloudIcon,
+  frontend: CodeIcon,
+  backend: ServerIcon,
+  api: PlugIcon,
+  testing: FlaskIcon,
+  database: LayersIcon,
+  authentication: LockIcon,
+  architecture: NetworkIcon,
+  design: PaletteIcon,
+  tooling: WrenchIcon,
 };
 
 export const SOCIAL_ICONS: Record<SocialIconName, IconComponent> = {
@@ -48,8 +54,8 @@ export function getExperienceIcon(name: string): IconComponent {
   return EXPERIENCE_ICONS[name] ?? CodeIcon;
 }
 
-export function getSkillIcon(title: string): IconComponent {
-  return SKILL_ICONS[title] ?? CodeIcon;
+export function getSkillIcon(name: string): IconComponent {
+  return SKILL_ICONS[name] ?? CodeIcon;
 }
 
 export function getSocialIcon(

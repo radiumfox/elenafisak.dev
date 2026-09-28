@@ -1,4 +1,13 @@
-export type LabelColor = 'blue' | 'green' | 'purple' | 'orange' | 'pink';
+export type LabelColor =
+  | 'blue'
+  | 'green'
+  | 'purple'
+  | 'orange'
+  | 'pink'
+  | 'red'
+  | 'yellow'
+  | 'cyan'
+  | 'indigo';
 
 export interface SkillLabel {
   text: string;
@@ -11,6 +20,8 @@ export interface Skill {
   title: string;
   description: string;
   labels: SkillLabel[];
+  order: number;
+  name: string;
 }
 
 export interface ExperienceEntry {
@@ -19,6 +30,7 @@ export interface ExperienceEntry {
   name: string;
   title: string;
   description: string;
+  order: number;
 }
 
 export interface ProjectStep {

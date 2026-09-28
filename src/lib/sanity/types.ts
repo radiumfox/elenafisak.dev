@@ -55,6 +55,17 @@ export interface Project {
   steps: ProjectStep[];
 }
 
+export interface Certificate {
+  _id: string;
+  _createdAt: string;
+  order: number;
+  title: string;
+  company: string;
+  date: string;
+  skills: string[];
+  url?: string;
+}
+
 export interface SocialLink {
   _key?: string;
   name: string;
@@ -112,4 +123,5 @@ export interface SiteData {
   experience: ExperienceEntry[];
   projects: Project[];
   settings: SiteSettings | null;
+  certificates: Certificate[];
 }

@@ -3,3 +3,4 @@ export const experienceQuery = '*[_type == "experience"] | order(order asc)';
 export const projectsQuery =
   '*[_type == "project"] | order(_createdAt asc) { ..., "video": video.asset->{playbackId, assetId, status} }';
 export const settingsQuery = '*[_type == "siteSettings"][0]';
+export const certificatesQuery = '*[_type == "certificate"] | order(order asc)';

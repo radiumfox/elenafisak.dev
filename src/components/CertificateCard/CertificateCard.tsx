@@ -12,12 +12,12 @@ export function CertificateCard({
 }: CertificateCardProps) {
   return (
     <div className={`flex h-full flex-col gap-y-4 rounded-2xl border border-line  p-6  ${className}`}>
-      <div className="flex justify-between">
+      <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-0">
         <div className="space-y-2">
           <p className="flex-1 text-muted">{company}</p>
           <h3 className="text-lg font-semibold">{title}</h3>
         </div>
-        <p className="text-sm text-muted">{date}</p>
+        <p className="order-first text-sm text-muted md:order-none">{date}</p>
       </div>
 
       {skills.length > 0 && (

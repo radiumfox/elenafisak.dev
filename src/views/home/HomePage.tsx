@@ -173,7 +173,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       </ContentSection>
 
       <ContentSection id="certifications">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <span className="block h-1 w-12 rounded-full bg-accent" />
           <h2 className="text-title xs:text-heading font-bold tracking-tight">Certifications</h2>
           <p className="text-muted">

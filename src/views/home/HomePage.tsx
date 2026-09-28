@@ -7,6 +7,7 @@ import type { FeatureCardItem } from '@/components/FeatureCards';
 import { CarouselBase, CarouselCard } from '@/components/CarouselBase';
 import { LabelBase } from '@/components/LabelBase';
 import { ProjectInfoCard } from '@/components/ProjectInfoCard';
+import { CertificateCard } from '@/components/CertificateCard';
 import { ContactForm } from '@/features/contact';
 import { ButtonBase } from '@/components/ButtonBase';
 import { DownloadIcon } from '@/lib/icons/DownloadIcon';
@@ -16,7 +17,7 @@ import type { HomePageProps } from './types';
 import { ParticleNetwork } from '@/components/ParticleNetwork';
 
 export function HomePage({ data, downloadCvHref }: HomePageProps) {
-  const { skills, experience, projects, settings } = data;
+  const { skills, experience, projects, settings, certificates } = data;
 
   const linkedinUrl = getSocialLink(settings?.socials, 'linkedin');
 
@@ -101,7 +102,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
           {(skills ?? []).map((skill) => (
             <CarouselCard
               key={skill._id}
-              icon={getSkillIcon(skill.title)}
+              icon={getSkillIcon(skill.name)}
               title={skill.title}
               description={skill.description}
             >
@@ -168,6 +169,30 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
             <h2 className="text-heading font-bold tracking-tight">Drop a message</h2>
             <ContactForm contactEmail={settings?.email} />
           </div>
+        </div>
+      </ContentSection>
+
+      <ContentSection id="certifications">
+        <div className="space-y-6">
+          <span className="block h-1 w-12 rounded-full bg-accent" />
+          <h2 className="text-title xs:text-heading font-bold tracking-tight">Certifications</h2>
+          <p className="text-muted">
+            Continuous learning across backend development, cloud, and web engineering.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {(certificates ?? []).map((certificate) => (
+            <CertificateCard
+              className="max-w-180"
+              key={certificate._id}
+              title={certificate.title}
+              company={certificate.company}
+              date={certificate.date}
+              skills={certificate.skills}
+              href={certificate.url}
+            />
+          ))}
         </div>
       </ContentSection>
     </main>

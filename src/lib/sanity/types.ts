@@ -1,4 +1,13 @@
-export type LabelColor = 'blue' | 'green' | 'purple' | 'orange' | 'pink';
+export type LabelColor =
+  | 'blue'
+  | 'green'
+  | 'purple'
+  | 'orange'
+  | 'pink'
+  | 'red'
+  | 'yellow'
+  | 'cyan'
+  | 'indigo';
 
 export interface SkillLabel {
   text: string;
@@ -11,6 +20,8 @@ export interface Skill {
   title: string;
   description: string;
   labels: SkillLabel[];
+  order: number;
+  name: string;
 }
 
 export interface ExperienceEntry {
@@ -19,6 +30,7 @@ export interface ExperienceEntry {
   name: string;
   title: string;
   description: string;
+  order: number;
 }
 
 export interface ProjectStep {
@@ -41,6 +53,17 @@ export interface Project {
   appUrl?: string;
   githubUrl?: string;
   steps: ProjectStep[];
+}
+
+export interface Certificate {
+  _id: string;
+  _createdAt: string;
+  order: number;
+  title: string;
+  company: string;
+  date: string;
+  skills: string[];
+  url?: string;
 }
 
 export interface SocialLink {
@@ -100,4 +123,5 @@ export interface SiteData {
   experience: ExperienceEntry[];
   projects: Project[];
   settings: SiteSettings | null;
+  certificates: Certificate[];
 }

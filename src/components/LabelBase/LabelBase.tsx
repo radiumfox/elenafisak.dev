@@ -6,6 +6,10 @@ const COLOR_MAP: Record<LabelColorVariant, string> = {
   purple: 'bg-purple-950/20 text-purple-300',
   orange: 'bg-orange-950/20 text-orange-300',
   pink: 'bg-pink-950/20 text-pink-300',
+  red: 'bg-red-950/20 text-red-300',
+  yellow: 'bg-yellow-950/20 text-yellow-300',
+  cyan: 'bg-cyan-950/20 text-cyan-300',
+  indigo: 'bg-indigo-950/20 text-indigo-300',
 };
 
 export function LabelBase({ text, color }: LabelProps) {

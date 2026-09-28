@@ -1,4 +1,4 @@
-export { skillsQuery, experienceQuery, projectsQuery, settingsQuery } from './queries';
+export { skillsQuery, experienceQuery, projectsQuery, settingsQuery, certificatesQuery } from './queries';
 export { MUX_PLAYER_BASE_URL } from './config';
 export { PortableText } from './portableText';
 export type {
@@ -9,6 +9,7 @@ export type {
   ProjectStep,
   MuxVideo,
   Project,
+  Certificate,
   SocialLink,
   SiteSettings,
   SiteData,

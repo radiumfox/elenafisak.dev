@@ -6,4 +6,5 @@ export const NAV_LINKS: SectionLink[] = [
   { label: 'Skills', id: 'skills' },
   { label: 'Works', id: 'works' },
   { label: 'Contacts', id: 'contacts' },
+  { label: 'Certifications', id: 'certifications' },
 ];

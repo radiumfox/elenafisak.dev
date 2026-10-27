@@ -137,6 +137,16 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         </div>
       </ContentSection>
 
+      <ContentSection id="blog">
+        <span className="block h-1 w-12 rounded-full bg-accent" />
+        <div className="space-y-3">
+          <h2 className="text-title xs:text-heading font-bold tracking-tight">Blog</h2>
+          <p className="text-muted">
+            Things I&#39;m learning, building and figuring out along the way.
+          </p>
+        </div>
+      </ContentSection>
+
       <ContentSection id="contacts">
         <span className="block h-1 w-12 rounded-full bg-accent" />
         <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">

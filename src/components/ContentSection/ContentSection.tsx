@@ -11,7 +11,7 @@ interface ContentSectionProps {
 export function ContentSection({ id, children, className = '', title, description }: ContentSectionProps) {
   return (
     <section id={id} className={`scroll-mt-18 ${className}`}>
-      <article className="space-y-4">
+      <article className="space-y-6">
         <span className="block h-1 w-12 rounded-full bg-accent" />
         {(title || description) && (
           <div className="space-y-3">

@@ -130,7 +130,11 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         id="blog"
         title="Blog"
         description="Things I'm learning, building and figuring out along the way."
-      />
+      >
+        <div className={'grid grid-cols-3 gap-x-10'}>
+
+        </div>
+      </ContentSection>
 
       <ContentSection id="contacts">
         <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">

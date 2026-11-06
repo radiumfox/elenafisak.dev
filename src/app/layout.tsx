@@ -2,7 +2,7 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { robotoCondensed, jetbrainsMono } from './fonts';
-import { HeaderBase } from '@/components/HeaderBase';
+import { SiteHeader } from '@/components/SiteHeader';
 import { FooterBase } from '@/components/FooterBase';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { NAV_LINKS } from '@/lib/router';
@@ -11,7 +11,7 @@ import { PortableText } from '@/lib/sanity';
 import { toSocialLinks } from '@/lib/social';
 import { Logo } from '@/lib/icons/Logo';
 
-const MOBILE_HEADER_LINKS = NAV_LINKS.map((link) => ({ name: link.label, href: `#${link.id}` }));
+const HEADER_LINKS = NAV_LINKS.map((link) => ({ name: link.label, href: `#${link.id}` }));
 
 export const metadata: Metadata = {
   icons: {
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     <html className={`${robotoCondensed.variable} ${jetbrainsMono.variable}`}>
       <body className="overflow-y-auto">
         <div className="flex flex-col">
-          <HeaderBase logo={<Logo />} mobileLinks={MOBILE_HEADER_LINKS} desktopLinks={MOBILE_HEADER_LINKS} />
+          <SiteHeader logo={<Logo />} navLinks={HEADER_LINKS} />
 
           <div className="mx-auto w-full max-w-[1440px] px-2 xs:px-4 sm:px-6 md:px-6 lg:px-[100px] lg:min-h-0 lg:flex-1">
             <div className="flex flex-col justify-between">

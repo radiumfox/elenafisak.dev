@@ -146,7 +146,7 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         title="Blog"
         description="Things I'm learning, building and figuring out along the way."
       >
-        <div className={'grid grid-cols-3 gap-x-10'}>
+        <div className={'space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-10'}>
           { blogPostItems.map((blogPost) => (
             <ArticleCard
               key={`${blogPost.id}`}

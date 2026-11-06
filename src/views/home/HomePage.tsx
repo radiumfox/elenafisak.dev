@@ -15,9 +15,10 @@ import { getSocialLink, toSocialLinks } from '@/lib/social';
 import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
 import { ParticleNetwork } from '@/components/ParticleNetwork';
+import { ArticleCard } from '@/components/ArticleCard';
 
 export function HomePage({ data, downloadCvHref }: HomePageProps) {
-  const { skills, experience, projects, settings, certificates } = data;
+  const { skills, experience, projects, settings, certificates, blogPosts } = data;
 
   const linkedinUrl = getSocialLink(settings?.socials, 'linkedin');
 
@@ -39,6 +40,20 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         description: entry.description,
       })),
     [experience],
+  );
+
+  const blogPostItems = useMemo(
+    () =>
+      (blogPosts ?? []).map((entry) => ({
+        id: entry.name,
+        title: entry.title,
+        description: entry.description,
+        category: entry.category,
+        image: entry.image,
+        timeToRead: `${entry.time} minutes`,
+        date: new Date(entry._createdAt),
+      })),
+    [blogPosts],
   );
 
   return (
@@ -77,7 +92,6 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
       >
         <div className="space-y-12">
           <FeatureCards
-            className=""
             items={featureItems}
             action={featureAction}
           />
@@ -132,7 +146,17 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         description="Things I'm learning, building and figuring out along the way."
       >
         <div className={'grid grid-cols-3 gap-x-10'}>
-
+          { blogPostItems.map((blogPost) => (
+            <ArticleCard
+              key={`${blogPost.id}-id`}
+              image={blogPost.image}
+              title={blogPost.title}
+              description={blogPost.description}
+              category={blogPost.category}
+              timeToRead={blogPost.timeToRead}
+              date={blogPost.date}
+            />
+          ))}
         </div>
       </ContentSection>
 

@@ -1,5 +1,7 @@
+import type { SanityImage } from '@/lib/sanity';
+
 export interface ArticleCardProps {
-  icon: React.ReactNode;
+  image?: SanityImage;
   title: string;
   description: string;
   timeToRead: string;

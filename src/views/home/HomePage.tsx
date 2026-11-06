@@ -45,13 +45,14 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
   const blogPostItems = useMemo(
     () =>
       (blogPosts ?? []).map((entry) => ({
-        id: entry.name,
+        id: entry.slug.current,
         title: entry.title,
         description: entry.description,
         category: entry.category,
         image: entry.image,
         timeToRead: `${entry.time} minutes`,
         date: new Date(entry._createdAt),
+        href: `/blog/${entry.slug.current}`,
       })),
     [blogPosts],
   );
@@ -148,13 +149,14 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         <div className={'grid grid-cols-3 gap-x-10'}>
           { blogPostItems.map((blogPost) => (
             <ArticleCard
-              key={`${blogPost.id}-id`}
+              key={`${blogPost.id}`}
               image={blogPost.image}
               title={blogPost.title}
               description={blogPost.description}
               category={blogPost.category}
               timeToRead={blogPost.timeToRead}
               date={blogPost.date}
+              href={blogPost.href}
             />
           ))}
         </div>

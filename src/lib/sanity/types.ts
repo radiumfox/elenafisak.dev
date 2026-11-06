@@ -108,6 +108,11 @@ export interface SanityImage {
   };
 }
 
+export interface Slug {
+  _type: 'slug';
+  current: string;
+}
+
 export interface BlogPost {
   _id: string;
   _createdAt: string;
@@ -116,7 +121,7 @@ export interface BlogPost {
   category: BlogPostCategory;
   content: PortableTextBlock[];
   time: number;
-  name: string;
+  slug: Slug;
   image?: SanityImage;
 }
 

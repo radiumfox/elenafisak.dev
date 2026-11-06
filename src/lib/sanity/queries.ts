@@ -6,3 +6,4 @@ export const settingsQuery = '*[_type == "siteSettings"][0]';
 export const certificatesQuery = '*[_type == "certificate"] | order(order asc)';
 export const blogPostsQuery =
   '*[_type == "blogPost"] | order(_createdAt desc) { ..., image { ..., asset->{ _id, url, metadata { lqip, dimensions } } } }';
+export const blogPostBySlugQuery = '*[_type == "blogPost" && slug.current == $slug][0]';

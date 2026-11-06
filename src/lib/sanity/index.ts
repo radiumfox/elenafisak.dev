@@ -20,6 +20,7 @@ export type {
   Project,
   Certificate,
   BlogPost,
+  Slug,
   SanityImage,
   SanityImageAsset,
   SanityImageDimensions,

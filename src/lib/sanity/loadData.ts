@@ -7,7 +7,8 @@ import {
   projectsQuery,
   settingsQuery,
   certificatesQuery,
-  blogPostsQuery
+  blogPostsQuery,
+  blogPostBySlugQuery
 } from './queries';
 
 export interface LoadedSiteData {
@@ -32,4 +33,10 @@ export async function loadSiteData(): Promise<LoadedSiteData> {
   ]);
 
   return { skills, experience, projects, settings, certificates, blogPosts };
+}
+
+export async function loadBlogPost(slug: string): Promise<BlogPost | null> {
+  noStore();
+
+  return client.fetch<BlogPost | null>(blogPostBySlugQuery, { slug });
 }

@@ -28,6 +28,8 @@ export type {
   SiteSettings,
   SiteData,
   PortableTextBlock,
+  PortableTextEntry,
+  PortableTextImage,
   PortableTextSpan,
   PortableTextMarkDef,
 } from './types';

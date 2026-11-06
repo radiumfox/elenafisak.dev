@@ -119,7 +119,7 @@ export interface BlogPost {
   title: string;
   description: string;
   category: BlogPostCategory;
-  content: PortableTextBlock[];
+  content: PortableTextEntry[];
   time: number;
   slug: Slug;
   image?: SanityImage;
@@ -176,6 +176,12 @@ export type PortableTextMarkDef = {
   _type: 'link';
   href?: string;
 };
+
+export interface PortableTextImage extends SanityImage {
+  _key?: string;
+}
+
+export type PortableTextEntry = PortableTextBlock | PortableTextImage;
 
 export interface SiteData {
   skills: Skill[];

@@ -15,9 +15,10 @@ import { getSocialLink, toSocialLinks } from '@/lib/social';
 import { getExperienceIcon, getSkillIcon } from '@/lib/icons/mappings';
 import type { HomePageProps } from './types';
 import { ParticleNetwork } from '@/components/ParticleNetwork';
+import { ArticleCard } from '@/components/ArticleCard';
 
 export function HomePage({ data, downloadCvHref }: HomePageProps) {
-  const { skills, experience, projects, settings, certificates } = data;
+  const { skills, experience, projects, settings, certificates, blogPosts } = data;
 
   const linkedinUrl = getSocialLink(settings?.socials, 'linkedin');
 
@@ -39,6 +40,21 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         description: entry.description,
       })),
     [experience],
+  );
+
+  const blogPostItems = useMemo(
+    () =>
+      (blogPosts ?? []).map((entry) => ({
+        id: entry.slug.current,
+        title: entry.title,
+        description: entry.description,
+        category: entry.category,
+        image: entry.image,
+        timeToRead: `${entry.time} minutes`,
+        date: new Date(entry._createdAt),
+        href: `/blog/${entry.slug.current}`,
+      })),
+    [blogPosts],
   );
 
   return (
@@ -70,34 +86,24 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         </div>
       </ContentSection>
 
-      <ContentSection id="experience">
+      <ContentSection
+        id="experience"
+        title="More details about how I can help you"
+        description="Where I have worked and what I built along the way."
+      >
         <div className="space-y-12">
-          <div className="space-y-3">
-            <span className="block h-1 w-12 rounded-full bg-accent" />
-            <h2 className="text-title xs:text-heading font-bold tracking-tight">
-              More details about how I can help you
-            </h2>
-            <p className="text-muted">
-              Where I have worked and what I built along the way.
-            </p>
-          </div>
           <FeatureCards
-            className=""
             items={featureItems}
             action={featureAction}
           />
         </div>
       </ContentSection>
 
-      <ContentSection id="skills">
-        <div className="space-y-3">
-          <span className="block h-1 w-12 rounded-full bg-accent" />
-          <h2 className="text-title xs:text-heading font-bold tracking-tight">Skills</h2>
-          <p className="text-muted">
-            Technologies I know
-          </p>
-        </div>
-
+      <ContentSection
+        id="skills"
+        title="Skills"
+        description="Technologies I know"
+      >
         <CarouselBase navigation autoplay autoplayDelay={3000}>
           {(skills ?? []).map((skill) => (
             <CarouselCard
@@ -116,13 +122,11 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         </CarouselBase>
       </ContentSection>
 
-      <ContentSection id="works">
-        <span className="block h-1 w-12 rounded-full bg-accent" />
+      <ContentSection
+        id="works"
+        title="I'm currently working on"
+      >
         <div className="space-y-10">
-          <h2 className="text-title xs:text-heading font-bold tracking-tight">
-            I&#39;m currently working on
-          </h2>
-
           {(projects ?? []).map((project) => (
             <ProjectInfoCard
               key={project._id}
@@ -137,8 +141,37 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         </div>
       </ContentSection>
 
+      <ContentSection
+        id="blog"
+        title="Blog"
+        description="Things I'm learning, building and figuring out along the way."
+      >
+        <div className="space-y-8">
+          {blogPostItems.length === 0 ? (
+            <p className="w-full text-center text-3xl font-medium text-muted">No posts yet</p>
+          ) : (
+            <>
+              <div className={'space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-10'}>
+                { blogPostItems.map((blogPost) => (
+                  <ArticleCard
+                    key={`${blogPost.id}`}
+                    image={blogPost.image}
+                    title={blogPost.title}
+                    description={blogPost.description}
+                    category={blogPost.category}
+                    timeToRead={blogPost.timeToRead}
+                    date={blogPost.date}
+                    href={blogPost.href}
+                  />
+                ))}
+              </div>
+              <div className="w-full flex justify-center"><ButtonBase href="/blog" text="View all posts" mode="secondary" size="lg" className="w-full max-w-[600px]" /></div>
+            </>
+          )}
+        </div>
+      </ContentSection>
+
       <ContentSection id="contacts">
-        <span className="block h-1 w-12 rounded-full bg-accent" />
         <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-y-8 lg:gap-y-0 lg:space-x-6">
           <div className="space-y-8 mb-0">
             <h2 className="text-heading font-bold tracking-tight">Get in touch</h2>
@@ -172,15 +205,11 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         </div>
       </ContentSection>
 
-      <ContentSection id="certifications">
-        <div className="space-y-6">
-          <span className="block h-1 w-12 rounded-full bg-accent" />
-          <h2 className="text-title xs:text-heading font-bold tracking-tight">Certifications</h2>
-          <p className="text-muted">
-            Continuous learning across backend development, cloud, and web engineering.
-          </p>
-        </div>
-
+      <ContentSection
+        id="certifications"
+        title="Certifications"
+        description="Continuous learning across backend development, cloud, and web engineering."
+      >
         <div className="space-y-4">
           {(certificates ?? []).map((certificate) => (
             <CertificateCard

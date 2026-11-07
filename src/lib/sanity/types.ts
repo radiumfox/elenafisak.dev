@@ -66,6 +66,68 @@ export interface Certificate {
   url?: string;
 }
 
+export enum BlogPostCategory {
+  FRONTEND = 'frontend',
+  BACKEND = 'backend',
+  KUBERNETES = 'kubernetes',
+  ARCHITECTURE = 'architecture',
+}
+
+export interface SanityImageDimensions {
+  width: number;
+  height: number;
+  aspectRatio: number;
+}
+
+export interface SanityImageAsset {
+  _id?: string;
+  _ref?: string;
+  _type?: 'reference';
+  url?: string;
+  metadata?: {
+    lqip?: string;
+    dimensions?: SanityImageDimensions;
+  };
+}
+
+export interface SanityImage {
+  _type: 'image';
+  asset: SanityImageAsset;
+  alt?: string;
+  hotspot?: {
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+  };
+  crop?: {
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  };
+}
+
+export interface Slug {
+  _type: 'slug';
+  current: string;
+}
+
+export interface BlogPostCard {
+  _id: string;
+  _createdAt: string;
+  title: string;
+  description: string;
+  category: BlogPostCategory;
+  time: number;
+  slug: Slug;
+  image?: SanityImage;
+}
+
+export interface BlogPost extends BlogPostCard {
+  content: PortableTextEntry[];
+}
+
 export interface SocialLink {
   _key?: string;
   name: string;
@@ -118,10 +180,17 @@ export type PortableTextMarkDef = {
   href?: string;
 };
 
+export interface PortableTextImage extends SanityImage {
+  _key?: string;
+}
+
+export type PortableTextEntry = PortableTextBlock | PortableTextImage;
+
 export interface SiteData {
   skills: Skill[];
   experience: ExperienceEntry[];
   projects: Project[];
   settings: SiteSettings | null;
   certificates: Certificate[];
+  blogPosts?: BlogPost[];
 }

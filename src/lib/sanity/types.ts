@@ -113,16 +113,19 @@ export interface Slug {
   current: string;
 }
 
-export interface BlogPost {
+export interface BlogPostCard {
   _id: string;
   _createdAt: string;
   title: string;
   description: string;
   category: BlogPostCategory;
-  content: PortableTextEntry[];
   time: number;
   slug: Slug;
   image?: SanityImage;
+}
+
+export interface BlogPost extends BlogPostCard {
+  content: PortableTextEntry[];
 }
 
 export interface SocialLink {

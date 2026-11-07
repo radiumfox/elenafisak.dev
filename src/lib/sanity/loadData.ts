@@ -1,15 +1,17 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { client } from './client';
-import type { Skill, ExperienceEntry, Project, SiteSettings, Certificate, BlogPost } from './types';
+import type { Skill, ExperienceEntry, Project, SiteSettings, Certificate, BlogPost, BlogPostCard } from './types';
 import {
   skillsQuery,
   experienceQuery,
   projectsQuery,
   settingsQuery,
   certificatesQuery,
-  blogPostsQuery,
+  blogPostCardsQuery,
   blogPostBySlugQuery
 } from './queries';
+
+const HOME_BLOG_POSTS_LIMIT = 3;
 
 export interface LoadedSiteData {
   skills: Skill[];
@@ -17,7 +19,7 @@ export interface LoadedSiteData {
   projects: Project[];
   settings: SiteSettings | null;
   certificates: Certificate[];
-  blogPosts: BlogPost[];
+  blogPosts: BlogPostCard[];
 }
 
 export async function loadSiteData(): Promise<LoadedSiteData> {
@@ -29,7 +31,7 @@ export async function loadSiteData(): Promise<LoadedSiteData> {
     client.fetch<Project[]>(projectsQuery),
     client.fetch<SiteSettings | null>(settingsQuery),
     client.fetch<Certificate[]>(certificatesQuery),
-    client.fetch<BlogPost[]>(blogPostsQuery)
+    client.fetch<BlogPostCard[]>(blogPostCardsQuery, { limit: HOME_BLOG_POSTS_LIMIT })
   ]);
 
   return { skills, experience, projects, settings, certificates, blogPosts };

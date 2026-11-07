@@ -146,19 +146,22 @@ export function HomePage({ data, downloadCvHref }: HomePageProps) {
         title="Blog"
         description="Things I'm learning, building and figuring out along the way."
       >
-        <div className={'space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-10'}>
-          { blogPostItems.map((blogPost) => (
-            <ArticleCard
-              key={`${blogPost.id}`}
-              image={blogPost.image}
-              title={blogPost.title}
-              description={blogPost.description}
-              category={blogPost.category}
-              timeToRead={blogPost.timeToRead}
-              date={blogPost.date}
-              href={blogPost.href}
-            />
-          ))}
+        <div className="space-y-8">
+          <div className={'space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-10'}>
+            { blogPostItems.map((blogPost) => (
+              <ArticleCard
+                key={`${blogPost.id}`}
+                image={blogPost.image}
+                title={blogPost.title}
+                description={blogPost.description}
+                category={blogPost.category}
+                timeToRead={blogPost.timeToRead}
+                date={blogPost.date}
+                href={blogPost.href}
+              />
+            ))}
+          </div>
+          <div className="w-full flex justify-center"><ButtonBase href="/blog" text="View all posts" mode="secondary" size="lg" className="w-full max-w-[600px]" /></div>
         </div>
       </ContentSection>
 

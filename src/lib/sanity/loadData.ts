@@ -31,10 +31,16 @@ export async function loadSiteData(): Promise<LoadedSiteData> {
     client.fetch<Project[]>(projectsQuery),
     client.fetch<SiteSettings | null>(settingsQuery),
     client.fetch<Certificate[]>(certificatesQuery),
-    client.fetch<BlogPostCard[]>(blogPostCardsQuery, { limit: HOME_BLOG_POSTS_LIMIT })
+    client.fetch<BlogPostCard[]>(blogPostCardsQuery, { offset: 0, limit: HOME_BLOG_POSTS_LIMIT })
   ]);
 
   return { skills, experience, projects, settings, certificates, blogPosts };
+}
+
+export async function loadBlogPostCards(limit = 10, offset = 0): Promise<BlogPostCard[]> {
+  noStore();
+
+  return client.fetch<BlogPostCard[]>(blogPostCardsQuery, { limit, offset });
 }
 
 export async function loadBlogPost(slug: string): Promise<BlogPost | null> {

@@ -5,7 +5,7 @@ export const projectsQuery =
 export const settingsQuery = '*[_type == "siteSettings"][0]';
 export const certificatesQuery = '*[_type == "certificate"] | order(order asc)';
 export const blogPostCardsQuery = `
-  *[_type == "blogPost"] | order(_createdAt desc, _id desc)[0...$limit] {
+  *[_type == "blogPost"] | order(_createdAt desc, _id desc)[$offset...$offset + $limit] {
     _id,
     _createdAt,
     title,

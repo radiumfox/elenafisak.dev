@@ -5,7 +5,7 @@ export default async function BlogPage() {
   const blogPosts = await loadBlogPostCards();
 
   return (
-    <main className="mt-35 w-full min-w-0 space-y-30 pb-20 lg:pb-60">
+    <main className="mt-6 w-full min-w-0 space-y-6 pb-20 lg:pb-60">
       <h1 className="text-title xs:text-heading font-bold tracking-tight">Blog</h1>
       <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-10">
         {blogPosts.map((blogPost) => (

@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { robotoCondensed, jetbrainsMono } from './fonts';
 import { SiteHeader } from '@/components/SiteHeader';
+import { BackButton } from '@/components/BackButton';
 import { FooterBase } from '@/components/FooterBase';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { NAV_LINKS } from '@/lib/router';
@@ -32,14 +33,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const footerDescription = settings?.footerDescription ?? '';
 
   return (
-    <html className={`${robotoCondensed.variable} ${jetbrainsMono.variable}`}>
-      <body className="overflow-y-auto">
-        <div className="flex flex-col">
+    <html className={`h-full ${robotoCondensed.variable} ${jetbrainsMono.variable}`}>
+      <body className="overflow-y-auto h-full">
+        <div className="flex flex-col h-full">
           <SiteHeader logo={<Logo />} navLinks={HEADER_LINKS} />
 
           <div className="mx-auto w-full max-w-[1440px] px-2 xs:px-4 sm:px-6 md:px-6 lg:px-[100px] lg:min-h-0 lg:flex-1">
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between h-full">
               <div>
+                <BackButton className="mt-6" />
                 {children}
               </div>
               <FooterBase logo={<Logo />} description={footerDescription} columns={[]}>
